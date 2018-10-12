@@ -278,7 +278,7 @@ public class Demo2_Defferent {
 	public static void main(String[] args) {
 		/**
 		 * do while 和 while的区别
-		 * do while 至少会执行一次，但是while和for一样必须先拍判断条件是否成立，再执行循环体
+		 * do while 至少会执行一次，但是while和for一样必须先判断条件是否成立，再执行循环体
 		 */
 		int i = 11;
 		do {
@@ -636,3 +636,253 @@ public class Demo4_Return {
     1. 如何写一个方法
     2. 案例展示
         1. 求两个数据之和的案例
+```java
+package com.leeup.javase.day02.方法;
+package com.leeup.javase.day02.方法;
+/**
+ * 利用方法求两个数的和
+ * @author 李闯
+ *
+ */
+public class Demo2_Sum {
+
+	public static void main(String[] args) {
+		int result = sum(12, 44); 			//1. 调用add方法，将12，20，分别传递给a,b,这里给的参数就是实际参数 	 
+		System.out.println(result);			//4. 方法返回的结果返回给result并输出
+	}
+	
+	/**
+	 * 求两个整数的和
+	 * 1. 整数的和结果还是整数
+	 * 2. 有两个未知内容参与运算
+	 * 
+	 * 如何写方法?
+	 * 1. 明确返回值类型，在这里即int
+	 * 2. 方法名字，要起到见名知意，即sum
+	 * 3. 明确参数列表，这里对两个整数进行运算，即int a ,int b [形式参数，用来接收调用方法时传的值]
+	 * 3.1  参数类型即 int
+	 * 3.2  参数名即 a,b
+	 */
+	public static int sum(int a, int b) {	//2. 赋值a = 10, b = 20;
+		return a+b;							//3. 执行语句把a,b相加并返回
+	}
+	
+	/**
+	 * 使用开饭店：厨师的案例来讲解方法的使用/便利
+	 * 
+	 * 盘子 [返回类型] 炒菜[方法名](油,调料,米,菜[形式参数，等待实际参数填入]){
+	 * 		炒菜的动作[方法体操作语句]
+	 * 		return 一盘菜[返回值和返回类型的类型保持一致]
+	 * }
+	 */
+	
+	/***
+	 * 调用方法
+	 * 
+	 * //盘子 = 炒菜(地沟油,苏丹红,镉大米,烂白菜[实际参数]);  注：返回值类型是什么，我们就要用什么类型去接收
+	 */
+}
+
+}
+```
+### 21. 方法的注意事项
+    1. 方法调用
+        1. 单独调用，一般来说没有意义，所以不推荐
+```java
+sum(12, 44); 	//单独调用，一般不建议，有返回值的方法的单独调用,没有意义
+```
+        2. 输出调用，但是不够好，因为我们可能需要针对结果进行进一步的操作
+```java
+System.out.println(sum(3, 5));  //这样调用是可以,但是如果需要这个结果不推荐这样调用
+```
+        3. 赋值调用，推荐方案[将得到的结果赋值给定义的变量，方便对其操作和取值]
+```java
+int result = sum(12, 44);
+System.out.println(result);
+```
+    1. 案例展示
+        1. 方法不调用不执行[例如：厨师在没客人的时候就闲着，来了客人再去炒菜。即方法在被调用的时候才会执行]
+        2. 方法与方法是平级关系，不能做嵌套定义[例如：厨师具备炒菜的功能，还具备洗衣服的功能， 但是厨师不能炒菜的时候洗衣服或者洗衣服的时候炒菜，这两者应该是并列关系,不能嵌套使用]
+        3. 方法定义的时候参数之间用逗号隔开
+        4. 方法调用的时候不用再传递数据类型[在调用方法时不需要再传递参数的类型，这里传递参数相当于给形式参数赋值，即类型其实已经被定义好，我们只需要传递参数即可]
+        5. 如果方法有明确返回值类型，一定要有return 带回一个值[除void不需要返回值外，只要定义了返回值类型，就必须使用return语句带回相应类型的参数]
+
+### 22. 方法的练习
+    1. 案例演示
+        1. 需求：键盘录入两个数据，返回两个数中的较大值
+    2. 案例演示
+        1. 需求：键盘录入两个数据，比较两个数是否相等
+```java
+package com.leeup.javase.day02.方法;
+
+import java.util.Scanner;
+
+/**
+ * 1. 案例展示
+ * 	需求:键盘接收两个数据,返回两个数中的较大值
+ * 2. 案例展示
+ * 	需求:键盘录入两个数据,比较两个数是否相等
+ * @author 李闯
+ *
+ */
+public class Test1_Method {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);//1. 创建键盘录入对象
+		
+		System.out.println("请输入第一个整数!");
+		int x = sc.nextInt();				//2. 键盘录入的值存储在x中
+		System.out.println("请输入第二个整数!");
+		int y = sc.nextInt();
+		
+		int max = getMax(x, y);
+		System.out.println("您输入的的最大值为"+max);
+		
+		
+		boolean b =isEquals(x, y);
+		System.out.println(b == true?"您输入的两个数相同":"您输入的两个数不同");
+	}
+	
+	/**
+	 * 方法返回两个整数值中的较大值
+	 * 分析
+	 * 1. 明确返回值类型 int 
+	 * 2. 明确参数列表,两个int整数
+	 */
+	public static int getMax(int a,int b) {
+		return a > b ? a:b;
+	}
+	
+	/**
+	 * 方法比较两个数是否相等
+	 * 分析:
+	 * 1. 明确返回值类型 boolean
+	 * 2. 明确参数列表,两个int类型
+	 */
+	public static boolean isEquals(int a,int b) {
+		return a == b;//a==b 即true,a!=b 即false
+	}
+}
+```
+
+### 23. 方法之输出星形及其调用
+    1. 案例演示
+        1. 需求：根据键盘录入的行数和列数，在控制台输出星形
+    2. 方法调用：(无返回值,void)
+    3. 单独调用
+    4. 输出调用(错误)
+    5. 赋值调用(错误)
+```java
+package com.leeup.javase.day02.方法;
+
+import java.util.Scanner;
+
+/**
+ * 案例展示
+ * 		需求:根据键盘录入的行数和列数,在控制台输出星形
+ * 方法调用
+ * 		单独调用
+ * 		输出调用[错误]
+ * 		赋值调用[错误]
+ * 		
+ * 根据情况来看只能使用单独调用最合适
+ * 返回值是void的方法,只能单独调用,并不能输出或者
+ * @author 李闯
+ *
+ */
+public class Demo3_Method {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);	
+		System.out.println("请输入行数");
+		int row = sc.nextInt();  
+		System.out.println("请输入列数");
+		int column = sc.nextInt();
+		
+		getStar(row, column);
+	}
+	
+	/**
+	 * 控制台输出矩形星形
+	 * 分析:
+	 * 	返回值类型:经分析,没有具体的返回值类型,即可使用void
+	 * 	参数类型:行与列为int类型参数
+	 * 
+	 * 
+	 */
+	public static void getStar(int a,int b) {
+		for (int i = 1; i <=a; i++) {
+			//行数
+			for (int j = 1; j <=b; j++) {
+				//列数
+				System.out.print("*");
+			}
+			System.out.println();//内循环结束即换行一次
+		}
+		return ;//如果返回值类型是void,return可以省略,即使省略系统也会默认给加上,形式是 return;
+	}
+}
+```
+
+### 24. 方法的练习
+    1. 案例演示
+        1. 需求：根据键盘录入的数据输出对应的乘法表
+```java
+package com.leeup.javase.day02.方法;
+/**
+ * 案例展示
+ * 		需求:根绝键盘录入的数据输出对应的九九乘法表
+ * @author 李闯
+ *
+ */
+
+import java.util.Scanner;
+
+public class Test2_Method {
+
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		System.out.println("请输入一个1-9之间的整数");
+		
+		int x = sc.nextInt();
+		print99(x);
+	}
+	
+	/**
+	 * 输出对应的九九乘法表
+	 * 分析
+	 * 		1. 返回值类型:void
+	 * 		2. 参数列表:只需要一个int数
+	 */
+	public static void print99(int a) {
+		for (int i = 1; i < a; i++) {
+			for (int j = 1; j < i; j++) {
+				System.out.print(j + "*" + i + "=" + (i * j)+"\t");
+			}
+			System.out.println();
+		}
+	}
+}
+```
+
+### 25. 方法重载概述和基本使用
+    1. 方法的重载和概述
+        1. 求和案例
+            1. 2个整数
+            2. 3个整数
+            3. 4个整数
+        2. 方法重载
+            1. 在同一个类中，方法名相同，参数列表不同，与返回值类型无关
+            2. 参数列表不同
+                1. 参数个数不同
+                2. 参数类型不同
+                3. 参数的顺序不同
+
+### 26. 方法重载练习比较数据是否相等
+    1. 案例演示
+        1. 需求：比较两个数据是否相等。
+        2. 参数类型分别为两个int类型，两个double类型，并在main方法中进行测试
+
+### 27. day04总结
+    1. 把今天的知识点总结一遍。
