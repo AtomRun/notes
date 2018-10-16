@@ -61,7 +61,9 @@ public class Demo2_Array {
         1. 给CPU使用
 
 ### 4. 数组的内存图解1  int[] arr2 = new int[5] 
-    1. 每次程序编译运行时，main方法会以栈帧的形式被压进栈底，主方法压进栈后，方法中声明了一个 int[] arr2的引用，同时在堆内存中创建了五个连续的内存空间索引为0，1，2，3，4。int数组会赋予其默认初始化值为0,且赋予一个地址。若使用了静态初始化方式创建数组就显式初始化默认值将默认值0改变为静态初始化数组时定义的元素的值。然后再进行赋值将数组在堆中的地址赋值给arr2，当通过arr2[0]找数组中的元素时，arr2会通过堆赋值给它的地址再通过索引拿到值。
+    1. 每次程序编译运行时，main方法会以栈帧的形式被压进栈底，主方法压进栈后，方法中声明了一个 int[] arr2的引用，
+    同时在堆内存中创建了五个连续的内存空间索引为0，1，2，3，4
+    int数组会赋予其默认初始化值为0,且赋予一个地址。若使用了静态初始化方式创建数组就显式初始化默认值将默认值0改变为静态初始化数组时定义的元素的值，然后再进行赋值将数组在堆中的地址赋值给arr2，当通过arr2[0]找数组中的元素时，arr2会通过堆赋值给它的地址再通过索引拿到值。
 
 ### 5. 数组的内存图解2
 
@@ -426,7 +428,6 @@ public class Demo12_Array {
 
 }
 ```
-
 ### 15. 二维数组概述和格式1的讲解
     1. 二维数组概述
     2. 二维数组格式
@@ -498,4 +499,173 @@ public class Demo1_Array {
 ```
 
 ### 16. 画图讲解二维数组名称，一维数组名称，一个元素的值的问题
-    ![Loading](https://raw.githubusercontent.com/AtomRun/notes/master/noteimages/%E4%BA%8C%E4%BD%8D%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png)
+    ![Loading]()
+
+### 17. 二维数组格式2的讲解
+    1. 二维数组格式2
+        1. int[] [] arr = new int [3][];
+    2. 二维数组格式2的解释
+    3. 案例展示
+        1. 讲解格式，输出数据，并画内存图
+```java
+package com.leeup.javase.day05.二维数组;
+/**
+ * 二维数组格式2
+ * 		int[] [] arr = new int [3][];
+ * 二维数组格式2的解释
+ * 案例展示
+ * 		讲解格式，输出数据，并画内存图
+ * @author 李闯
+ *
+ */
+public class Demo3_Array {
+
+	public static void main(String[] args) {
+		int [] [] arr = new int [3][]; 	//这是一个二维数组，这个二维数组中有三个一维数组，三个一维数组都没有被初始化赋值
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		arr[0] = new int[3];		//相当于第一个一维数组可以存储三个int元素
+		arr[1] = new int[5];		//相当于第二个一维数组可以存储五个int元素
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+	}
+}
+```
+
+### 18. 二维数组格式3的讲解
+    1. 二维数组格式3
+        1. int[] [] arr = {{1,2,3},{4,5},{6,7,8,9}};
+    2. 二维数组格式3的解释
+    3. 案例展示
+        1. 讲解格式,输出数据，并画内存图
+```java
+package com.leeup.javase.day05.二维数组;
+
+public class Demo4_Array {
+
+	public static void main(String[] args) {
+		int[] [] arr = {{1,2,3},{4,5,6},{7,8,9}}; //这是一个二维数组，这个二维数组中的每个大括号都代表一个一维数组
+		System.out.println(arr);		//[[I@15db9742	二维数组的地址值
+		System.out.println(arr[0]);		//[I@6d06d69c	一维数组的地址
+		System.out.println(arr[0][0]);	//1				一维数组的元素值
+	
+	}
+}
+```
+### 19. 二维数组练习1遍历
+    1. 案例展示
+        1. 需求:二维数组遍历
+
+        2. 外循环控制的是二维数组的长度，其实就是一维数组的个数。
+        3. 内循环控制的是一维数组的长度
+
+```java
+package com.leeup.javase.day05.二维数组;
+/**
+ * 二维数组的遍历
+ * @author 李闯
+ *
+ */
+public class Demo5_Array {
+
+	public static void main(String[] args) {
+		/**
+		 * 使用嵌套for循环遍历二维数组
+		 */
+		int[] [] arr = {{1,2,3},{4,5,6},{7,8,9}}; //这是一个二维数组，这个二维数组中的每个大括号都代表一个一维数组
+		for (int i = 0; i < arr.length; i++) {//外层循环应该拿到二维数组中的每一个一维数组
+			for (int j = 0; j < arr[0].length; j++) {//获取每个一维数组中的元素
+				System.out.print(arr[i][j]+" ");	//例如第一次循环即arr[0][0],第二次即arr[0][1]
+			}
+			System.out.println();
+		}
+	}
+}
+```
+
+### 20. 二维数组练习2求和
+    1. 案例展示
+        1. 需求:公司年销售额求和
+        2. 某公司按照季度和月份统计的数据如下：单位(万元)
+        3. 第一季度：22，66，44
+        4. 第二季度：77，33，88
+        5. 第三季度：25，45，65
+        6. 第四季度：11，66，99
+```java
+package com.leeup.javase.day05.二维数组;
+/**
+ *     1. 案例展示
+        1. 需求:公司年销售额求和
+        2. 某公司按照季度和月份统计的数据如下：单位(万元)
+        3. 第一季度：22,66,44
+        4. 第二季度：77,33,88
+        5. 第三季度：25,45,65
+        6. 第四季度：11,66,99
+ * @author 李闯
+ *
+ */
+public class Test2_Array {
+
+	public static void main(String[] args) {
+		int[] [] arr = {{22,66,44},{77,33,88},{25,45,65},{11,66,99}};
+		
+		int sum = 0;//定义变量记录每次相加的结果
+		
+		for (int i = 0; i < arr.length; i++) {	//获取每个一维数组
+			for (int j = 0; j < arr[i].length; j++) {	//获取每个一维数组的元素
+				sum += arr[i][j];				//累加
+			}
+		}
+		System.out.println(sum);
+	}
+}
+```
+
+### 20. 思考题：java中的参数传递问题以及图解
+	1. 基本数据类型的值传递，不改变原值，因为调用后就会弹栈，局部变量随之消失
+	2. 引用数据类型的值传递，改变原值，因为即使方法弹栈，但是堆内存的数组对象还在，可以通过地址继续访问。
+
+	1. 问题：java中到底是传值还是传地址？
+		1. 有人认为：既是传值，也是传地址。基本数据类型传递的是值，引用数据类型传递的是地址
+		2. 第二种：java中只有传传值，因为地址值也是值[目前认为正确的，因为是java之父，詹姆斯·高斯林提出的]
+```java
+package com.leeup.javase.day05.二维数组;
+/**
+ * 参数传递：引用类型的值传递和基本数据类型的值传递
+ * @author 李闯
+ *
+ */
+public class Test3_Array {
+
+	public static void main(String[] args) {
+			int a = 10;
+			int b = 20;
+			System.out.println("a:"+a+",b:"+b);
+			change(a,b);
+			System.out.println("a:"+a+",b:"+b);//基本数据类型，change方法执行完之后，不改变原值，调用完毕之后弹栈，在方法中被改变了的局部变量的值也消失了。
+											   //因为没有new对象，所以一切操作都在栈中
+			
+			int [] arr = {1,2,3,4,5};
+			change(arr);
+			System.out.println(arr[1]);		   //引用数据类型，arr创建之后会在堆中开辟内存空间用来存放数组得元素值，而方法中的arr是引用了这里的arr，当方法中修改了arr中元素的值的时候
+											   //即使弹栈了，arr在堆内存中的数组对象还是存在的，已经被修改的元素值不会消失，还可以通过地址访问
+	}
+	
+	public static void change(int a,int b) {
+		System.out.println("a:"+a+",b:"+b);
+		a = b;
+		b = a+b;
+		System.out.println("a:"+a+",b:"+b);
+	}
+	
+	public static void change(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i]%2==0) {
+				arr[i]*=2;
+			}
+		}
+	}
+}
+```
