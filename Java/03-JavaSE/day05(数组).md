@@ -499,7 +499,7 @@ public class Demo1_Array {
 ```
 
 ### 16. 画图讲解二维数组名称，一维数组名称，一个元素的值的问题
-    ![二维数组内存图](notes/noteimages/Two-bit array memory map.png)
+    ![二维数组内存图](https://github.com/AtomRun/notes/blob/master/noteimages/arrayMemoryMap.png)
 
 ### 17. 二维数组格式2的讲解
     1. 二维数组格式2
