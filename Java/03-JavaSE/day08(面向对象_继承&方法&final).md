@@ -669,7 +669,7 @@ class Dog1 extends Animal1{
 	1. final概述
 		1. final是最终的
 		2. final作用:
-			1. 定义一些固定的值，通一声明比较好
+			1. 定义一些固定的值，统一声明比较好
 		3. 通常会增加两个修饰符
 			1. piblic staic final double PI = 3.14
 	2. final修饰特点
