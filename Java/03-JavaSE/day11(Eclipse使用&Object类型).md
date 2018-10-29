@@ -401,7 +401,7 @@ public class Student {
 		//的String对象时，结果才为true
 		
 		Student student = (Student)obj;
-		return this.name.equals(student.name) && this.age == student.age  ;//基本数据类型不能调用方法的
+		return this.name.equals(student.name) && this.age == student.age;//基本数据类型不能调用方法的
 	}
 }
 ```
