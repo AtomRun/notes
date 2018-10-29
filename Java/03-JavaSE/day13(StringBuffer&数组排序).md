@@ -419,11 +419,59 @@ public class Demo7_StringBuffer {
             2.  请对数组元素进行排序
             3. 冒泡排序
                 1. 相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
-
+![数组高级冒泡排序原理图解](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
 ### 13. 数组高级冒泡排序以及代码实现
     1. 案例展示
         1. 数组高级冒泡排序代码
+```java
+package com.leeup.javase.day13.array;
+/**
+ * 数组高级冒泡排序
+ * @author 李闯
+ *
+ */
+public class Demo1_Array {
 
+	public static void main(String[] args) {
+		int[] arr = {24,69,20,57,13};
+		bubbleSort(arr);
+		print(arr);
+	}
+	
+	/**
+	 * 冒泡排序
+	 * 1.返回值类型：void
+	 * 2.参数列表：int[] arr
+	 * 
+	 * 第一次：arr[0]与arr[1],arr[1]与arr[2],arr[2]与arr[3],arr[3]与arr[4]比较4次
+	 * 第二次：arr[0]与arr[1],arr[1]与arr[2],arr[2]与arr[3],比较3次
+	 * 第三次：arr[0]与arr[1],arr[1]与arr[2],比较2次
+	 * 第四次：arr[0]与arr[1],比较1次
+	 * 
+	 */
+	public static void bubbleSort(int[] arr) {
+		for (int i = 0; i < arr.length -1; i++) {	//外循环只需要比较arr.length-1次即可
+			for (int j = 0; j < arr.length-1 - i; j++) {//-1为了防止数组越界 -i是为了比较次数正确，提高效率
+				if (arr[j] > arr[j+1]) {
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
+	}
+	/**
+	 * 打印数组
+	 * 1.  返回值类型:void
+	 * 2. 参数列表int[] arr
+	 */
+	public static void print(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]+ " ");
+		}
+	}
+}
+```
 ### 14. 数组高级选择排序原理图解
     1. 画图演示
         1. 需求：
@@ -431,3 +479,14 @@ public class Demo7_StringBuffer {
             2. 请对数组元素进行排序
             3. 选择排序
                 1. 从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处
+
+### 15. 数组高级选择排序代码实现
+    1. 案例展示
+        1. 数组高级选择排序代码
+
+### 16. 数组高级二分查找原理图解
+    1. 画图展示
+        1. 二分查找
+        2. 前提：数组元素有序
+
+### 17. 数组高级二分查找代码实现及注意事项
