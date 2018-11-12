@@ -373,137 +373,390 @@ public class Demo4_ArrayCopy {
 	}
 ```
 ### 11. BufferedInputStream和BufferOutputStream拷贝
-1. 缓冲思想
-	* 字节流一次读写一个数组的速度明显比一次读写一个字节的速度快很多，
-	* 这是加入了数组这样的缓冲区效果，java本身在设计的时候，
-	* 也考虑到了这样的设计思想(装饰设计模式后面讲解)，所以提供了字节缓冲区流
-* B.BufferedInputStream
-	* BufferedInputStream内置了一个缓冲区(数组)
-	* 从BufferedInputStream中读取一个字节时
-	* BufferedInputStream会一次性从文件中读取8192个, 存在缓冲区中, 返回给程序一个
-	* 程序再次读取时, 就不用找文件了, 直接从缓冲区中获取
-	* 直到缓冲区中所有的都被使用过, 才重新从文件中读取8192个
-* C.BufferedOutputStream
-	* BufferedOutputStream也内置了一个缓冲区(数组)
-	* 程序向流中写出字节时, 不会直接写到文件, 先写到缓冲区中
-	* 直到缓冲区写满, BufferedOutputStream才会把缓冲区中的数据一次性写到文件里
-* D.拷贝的代码 
+    1. 缓冲思想
+        * 字节流一次读写一个数组的速度明显比一次读写一个字节的速度快很多，
+        * 这是加入了数组这样的缓冲区效果，java本身在设计的时候，
+        * 也考虑到了这样的设计思想(装饰设计模式后面讲解)，所以提供了字节缓冲区流
+    2. BufferedInputStream
+        * BufferedInputStream内置了一个缓冲区(数组)
+        * 从BufferedInputStream中读取一个字节时
+        * BufferedInputStream会一次性从文件中读取8192个, 存在缓冲区中, 返回给程序一个
+        * 程序再次读取时, 就不用找文件了, 直接从缓冲区中获取
+        * 直到缓冲区中所有的都被使用过, 才重新从文件中读取8192个
+    3. BufferedOutputStream
+        * BufferedOutputStream也内置了一个缓冲区(数组)
+        * 程序向流中写出字节时, 不会直接写到文件, 先写到缓冲区中
+        * 直到缓冲区写满, BufferedOutputStream才会把缓冲区中的数据一次性写到文件里
+    4. 拷贝的代码 
 
-		FileInputStream fis = new FileInputStream("致青春.mp3");			//创建文件输入流对象,关联致青春.mp3
-		BufferedInputStream bis = new BufferedInputStream(fis);			//创建缓冲区对fis装饰
-		FileOutputStream fos = new FileOutputStream("copy.mp3");		//创建输出流对象,关联copy.mp3
-		BufferedOutputStream bos = new BufferedOutputStream(fos);		//创建缓冲区对fos装饰
+            FileInputStream fis = new FileInputStream("致青春.mp3");			//创建文件输入流对象,关联致青春.mp3
+            BufferedInputStream bis = new BufferedInputStream(fis);			//创建缓冲区对fis装饰
+            FileOutputStream fos = new FileOutputStream("copy.mp3");		//创建输出流对象,关联copy.mp3
+            BufferedOutputStream bos = new BufferedOutputStream(fos);		//创建缓冲区对fos装饰
+            
+            int b;
+            while((b = bis.read()) != -1) {		
+                bos.write(b);
+            }
+            
+            bis.close();						//只关装饰后的对象即可
+            bos.close();
+        
+    5. 小数组的读写和带Buffered的读取哪个更快?
+        * 定义小数组如果是8192个字节大小和Buffered比较的话
+        * 定义小数组会略胜一筹,因为读和写操作的是同一个数组
+        * 而Buffered操作的是两个数组
+```java
+package com.leeup.javase.day20.stream;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * BufferedInputStream和BufferOutputStream拷贝
+ * @author 李闯
+ *
+ */
+public class BufferCopy {
+
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis = new FileInputStream("743800.png");	//创建输入流对象，关联该文件
+		FileOutputStream fos = new FileOutputStream("copy743800.png");	//创建输出流对象，关联拷贝出的文件
+		
+		BufferedInputStream bis = new BufferedInputStream(fis);	//创建缓冲区对象，对输入流进行包装将他变得更强大
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		
 		int b;
-		while((b = bis.read()) != -1) {		
+		while ((b = bis.read())!=-1) {
 			bos.write(b);
 		}
-		
-		bis.close();						//只关装饰后的对象即可
+		bis.close();
 		bos.close();
-	 
-* E.小数组的读写和带Buffered的读取哪个更快?
-	* 定义小数组如果是8192个字节大小和Buffered比较的话
-	* 定义小数组会略胜一筹,因为读和写操作的是同一个数组
-	* 而Buffered操作的是两个数组
+	}
+}
 
-### 12. flush和close方法的区别)
-* flush()方法
-	* 用来刷新缓冲区的,刷新后可以再次写出 
-* close()方法
-	* 用来关闭流释放资源的的,如果是带缓冲区的流对象的close()方法,不但会关闭流,还会再关闭流之前刷新缓冲区,关闭后不能再写出 
-### 13. 字节流读写中文) 
-* 字节流读取中文的问题
-	* 字节流在读中文的时候有可能会读到半个中文,造成乱码 
-* 字节流写出中文的问题
-	* 字节流直接操作的字节,所以写出中文必须将字符串转换成字节数组 
-	* 写出回车换行 write("\r\n".getBytes());
+```
+![BufferedInputStream和BufferOutputStream拷贝](https://github.com/AtomRun/notes/blob/master/noteimages/BufferedInputStream%E5%92%8CBufferOutputStream%E6%8B%B7%E8%B4%9D.png)
 
-### 14. 流的标准处理异常代码1.6版本及其以前)
-* try finally嵌套
-
-		FileInputStream fis = null;
-		FileOutputStream fos = null;
-		try {
-			fis = new FileInputStream("aaa.txt");
-			fos = new FileOutputStream("bbb.txt");
-			int b;
-			while((b = fis.read()) != -1) {
-				fos.write(b);
-			}
-		} finally {
-			try {
-				if(fis != null)
-					fis.close();
-			}finally {
-				if(fos != null)
-					fos.close();
-			}
-		}
-
-### 15. 流的标准处理异常代码1.7版本)
-* try close
-
-		try(
-			FileInputStream fis = new FileInputStream("aaa.txt");
-			FileOutputStream fos = new FileOutputStream("bbb.txt");
-			MyClose mc = new MyClose();
-		){
-			int b;
-			while((b = fis.read()) != -1) {
-				fos.write(b);
-			}
-		}
-* 原理
-	* 在try()中创建的流对象必须实现了AutoCloseable这个接口,如果实现了,在try后面的{}(读写代码)执行后就会自动调用,流对象的close方法将流关掉 
-
-### 16. 图片加密)
-* 给图片加密
-
-		BufferedInputStream bis = new BufferedInputStream(new FileInputStream("a.jpg"));
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("b.jpg"));
+### 12. flush和close方法的区别
+    * flush()方法
+        * 用来刷新缓冲区的,刷新后可以再次写出 
+    * close()方法
+        * 用来关闭流释放资源的的,如果是带缓冲区的流对象的close()方法,不但会关闭流,还会再关闭流之前刷新缓冲区,关闭后不能再写出 
+```java
+		/**
+		 * flush和close方法的区别
+		 * 不关流，拷贝的文件可能会比原文件小
+		 * close方法
+		 * 	具备刷新的方法，在关闭流之前，就会先刷新一次缓冲区，将缓冲区的字节全部都刷新到文件上，close之后不能继续写
+		 * flush方法
+		 * 	具备刷新的功能，刷完之后，可以继续写
+		 */
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream("743800.png"));
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("copy743800.png"));
 		
 		int b;
-		while((b = bis.read()) != -1) {
-			bos.write(b ^ 123);
+		while ((b = bis.read())!=-1) {
+			bos.write(b);
 		}
+		bos.flush();
 		
 		bis.close();
 		bos.close();
+```
+### 13. 字节流读写中文
+    * 字节流读取中文的问题
+        * 字节流在读中文的时候有可能会读到半个中文,造成乱码 
+    * 字节流写出中文的问题
+        * 字节流直接操作的字节,所以写出中文必须将字符串转换成字节数组 
+        * 写出回车换行 write("\r\n".getBytes());
+```java
+package com.leeup.javase.day20.stream;
 
-### 17. 拷贝文件)
-* 在控制台录入文件的路径,将文件拷贝到当前项目下
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-		Scanner sc = new Scanner(System.in);
-		System.out.println("请输入一个文件路径");
-		String line = sc.nextLine();				//将键盘录入的文件路径存储在line中
-		File file = new File(line);					//封装成File对象
-		FileInputStream fis = new FileInputStream(file);
-		FileOutputStream fos = new FileOutputStream(file.getName());
-		
+/***
+ * 字节流读写中文
+ * @author 李闯
+ *
+ */
+public class Demo6_Chinese {
+
+	public static void main(String[] args) throws IOException {
+//		demo1(); 
+		FileOutputStream fos = new FileOutputStream("zzz.txt");
+		fos.write("我读书少，你别骗我".getBytes());
+		fos.write("\r\n".getBytes());
+		fos.close();
+ 	}
+
+	private static void demo1() throws FileNotFoundException, IOException {
+		FileInputStream fis = new FileInputStream("yyy.txt");
+		byte[] arr = new byte[3];
 		int len;
-		byte[] arr = new byte[8192];				//定义缓冲区
-		while((len = fis.read(arr)) != -1) {
-			fos.write(arr,0,len);
+		while ((len = fis.read(arr))!=-1) {
+			System.out.println(new String(arr,0,len));
 		}
-		
 		fis.close();
-		fos.close();
+	}
+}
 
-### 18. 录入数据拷贝到文件)
-* 将键盘录入的数据拷贝到当前项目下的text.txt文件中,键盘录入数据当遇到quit时就退出
+```
+### 14. 流的标准处理异常代码1.6版本及其以前
+    * try finally嵌套
 
-		Scanner sc = new Scanner(System.in);
-		FileOutputStream fos = new FileOutputStream("text.txt");
-		System.out.println("请输入:");
-		while(true) {
-			String line = sc.nextLine();
-			if("quit".equals(line))
-				break;
-			fos.write(line.getBytes());
-			fos.write("\r\n".getBytes());
-		}
+            FileInputStream fis = null;
+            FileOutputStream fos = null;
+            try {
+                fis = new FileInputStream("aaa.txt");
+                fos = new FileOutputStream("bbb.txt");
+                int b;
+                while((b = fis.read()) != -1) {
+                    fos.write(b);
+                }
+            } finally {
+                try {
+                    if(fis != null)
+                        fis.close();
+                }finally {
+                    if(fos != null)
+                        fos.close();
+                }
+            }
+
+### 15. 流的标准处理异常代码1.7版本
+    * try close
+
+            try(
+                FileInputStream fis = new FileInputStream("aaa.txt");
+                FileOutputStream fos = new FileOutputStream("bbb.txt");
+                MyClose mc = new MyClose();
+            ){
+                int b;
+                while((b = fis.read()) != -1) {
+                    fos.write(b);
+                }
+            }
+    * 原理
+        * 在try()中创建的流对象必须实现了AutoCloseable这个接口,如果实现了,在try后面的{}(读写代码)执行后就会自动调用,流对象的close方法将流关掉 
+```java
+package com.leeup.javase.day20.stream;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * 
+ * @author 李闯
+ *
+ */
+public class Demo7_TryFinally {
+
+	public static void main(String[] args) throws IOException {
+//		demo1();
 		
-		fos.close();
+		/**
+		 * 1.7版本
+		 * 
+		 */
+			try(
+					//当流对象写在try的小括号中的时候，在执行大括号中的读写完成之后，会自动调用关闭的方法，
+					//try小括号中只能写具有自动关闭的功能对象
+					//InputStream继承了Closeable实现了AutoCloseable中有一个close方法
+					//想要写自己的对象，必须实现AutoCloseable接口，重写close方法
+					FileInputStream fis = new FileInputStream("xxx.txt");
+					FileOutputStream fos = new FileOutputStream("yyy.txt");
+					MyClose mc = new MyClose();
+			){
+				int b;
+				while ((b = fis.read())!=-1) {
+					fos.write(b);
+				}
+			}
+			
+	//		fis.close();
+	//		fos.close();
+	}
+
+	/**
+	 * 1.6
+	 * @throws IOException
+	 */
+	private static void demo1() throws IOException {
+		FileInputStream fis = null;
+		FileOutputStream fos = null;
+		try {
+			fis = new FileInputStream("xxx.txt");
+			fos =  new FileOutputStream("yyy.txt");
+			
+			int b;
+			while ((b = fis.read())!=-1) {
+				fos.write(b);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+				try {
+					if (fis!=null)
+						fis.close();
+				} finally {
+					if (fos!=null)  
+						fos.close();
+				}
+		}
+	}
+}
+
+
+class MyClose implements AutoCloseable{
+	public void close() {
+		System.out.println("我关了");
+	}
+}
+```
+### 16. 图片加密
+    * 给图片加密
+
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream("a.jpg"));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("b.jpg"));
+            
+            int b;
+            while((b = bis.read()) != -1) {
+                bos.write(b ^ 123);
+            }
+            
+            bis.close();
+            bos.close();
+```java
+package com.leeup.javase.day20.test;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * 图片加密
+ * @author 李闯
+ *
+ */
+public class Test1 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream("743800.png"));
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("copy743800.png"));
+		
+		int b;
+		while ((b = bis.read()) !=-1) {
+			bos.write(b ^ 123); //一个数字异或两次就是自己本身，所以异或的数就相当于密码一样，当
+		}
+		bis.close();
+		bos.close();
+	}
+}
+
+```
+### 17. 拷贝文件
+    * 在控制台录入文件的路径,将文件拷贝到当前项目下
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("请输入一个文件路径");
+            String line = sc.nextLine();				//将键盘录入的文件路径存储在line中
+            File file = new File(line);					//封装成File对象
+            FileInputStream fis = new FileInputStream(file);
+            FileOutputStream fos = new FileOutputStream(file.getName());
+            
+            int len;
+            byte[] arr = new byte[8192];				//定义缓冲区
+            while((len = fis.read(arr)) != -1) {
+                fos.write(arr,0,len);
+            }
+            
+            fis.close();
+            fos.close();
+```java
+package com.leeup.javase.day20.test;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+
+/**
+ * 在控制台录入文件的路径,将文件拷贝到当前项目下
+ * @author 李闯
+ *	分析：
+ *	1. 判断录入的是不是文件，如果是就存储并拷贝，所以要定义方法，对键盘录入的路径进行判断，如果是文件就返回
+ *  2. 在主方法中接收该文件
+ *  3. 读和写该文件
+ */
+public class Test2 {
+
+	public static void main(String[] args) throws IOException {
+		File file = getFile();
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file.getName()));
+		
+		
+		int b;
+		while ((b = bis.read())!=-1) {
+			bos.write(b);
+		}
+		bis.close();
+		bos.close();
+	}
+	
+	/**
+	 * 定义一个方法，获取键盘录入的文件路径，并封装成File对象返回
+	 * 	1. 返回值类型 File
+	 *  2. 参数列表无
+	 */
+	public static File getFile() {
+		Scanner scanner = new Scanner(System.in);	//创建键盘录入对象
+	
+		while (true) {
+			String line = scanner.nextLine();			//接收键盘录入路径
+			File file = new File(line);				//封装成file对象可以对其做一系列判断
+			if (!file.exists()) {
+				System.out.println("您录入的文件路径不存在，请重新录入");
+			} else if (file.isDirectory()) {
+				System.out.println("您录入的文件夹路径不正确，请重新录入");
+			}else {
+				return file;
+			}
+		}
+	}
+}
+
+```
+### 18. 录入数据拷贝到文件
+    * 将键盘录入的数据拷贝到当前项目下的text.txt文件中,键盘录入数据当遇到quit时就退出
+
+            Scanner sc = new Scanner(System.in);
+            FileOutputStream fos = new FileOutputStream("text.txt");
+            System.out.println("请输入:");
+            while(true) {
+                String line = sc.nextLine();
+                if("quit".equals(line))
+                    break;
+                fos.write(line.getBytes());
+                fos.write("\r\n".getBytes());
+            }
+            
+            fos.close();
 ### 19_day 总结
 * 把今天的知识点总结一遍。
