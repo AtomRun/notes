@@ -1,7 +1,7 @@
-##HttpServletRequest  和 HttpServletResponse
+## HttpServletRequest  和 HttpServletResponse
 
 
-###Servlet配置方式
+### Servlet配置方式
 
 * 1. 全路径匹配
 
@@ -22,13 +22,13 @@
 > 写法： 没有/  以 * 开始   *.扩展名    *.aa *.bb 
 
 
-###ServletContext
+### ServletContext
 
 > Servlet 上下文
 
 > 每个web工程都只有一个ServletContext对象。 说白了也就是不管在哪个servlet里面，获取到的这个类的对象都是同一个。
 
-###如何得到对象
+### 如何得到对象
 
 	//1. 获取对象
 		ServletContext context = getServletContext();
@@ -39,18 +39,18 @@
 2. 获取web工程中的资源
 3. 存取数据，servlet间共享数据  域对象
 
-####.可以获取全局配置参数
+#### 可以获取全局配置参数
 
-![icon](img/img01.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img01.png)
 
 
 获取全局参数
 
 
-![icon](img/img02.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img02.png)
 
 
-####. 可以获取Web应用中的资源
+#### 可以获取Web应用中的资源
 
 	1. 获取资源在tomcat里面的绝对路径
 
@@ -69,12 +69,12 @@
 
 		直接给相对的路径，然后获取流对象。
 
-![icon](img/img03.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img03.png)
 
 
 ### 通过classloader去获取web工程下的资源
 
-![icon](img/img04.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img04.png)
 
 
 ### 使用ServletContext存取数据。
@@ -83,23 +83,23 @@
 
 1. 定义一个登陆的html页面， 定义一个form表单
 
-![icon](img/img06.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img06.png)
 
 2. 定义一个Servlet，名为LoginServlet
 
 
-![icon](img/img07.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img07.png)
 
 3. 针对成功或者失败，进行判断，然后跳转到不一样的网页
 
-![icon](img/img08.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img08.png)
 
-###ServletContext存取值分析
+### ServletContext存取值分析
 
-![icon](img/img09.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img09.png)
 
 
-##细节：
+### 节：
 
 		<!-- 	
 		A路径： Servlet的路径
@@ -116,7 +116,7 @@
 		</form>
 
 
-###ServletContext 何时创建， 何时销毁?
+### ServletContext 何时创建， 何时销毁?
 
 服务器启动的时候，会为托管的每一个web应用程序，创建一个ServletContext对象
 
@@ -127,7 +127,7 @@
 > 只要在这个项目里面，都可以取。 只要同一个项目。 A项目 存， 在B项目取，是取不到的？ ServletContext对象不同。
 
 
-##HttpServletRequest
+### HttpServletRequest
 
 > 这个对象封装了客户端提交过来的一切数据。 
 
@@ -203,7 +203,7 @@
 		这行设置一定要写在getParameter之前。
 
 
-##HttpServletResponse
+### HttpServletResponse
 
 > 负责返回数据给客户端。 
 
@@ -250,14 +250,14 @@
 
 		--------------------------------------------
 
-###不管是字节流还是字符流，直接使用一行代码就可以了。
+### 不管是字节流还是字符流，直接使用一行代码就可以了。
 
 	response.setContentType("text/html;charset=UTF-8");
 
 	然后在写数据即可。
 
 
-###演练下载资源。
+### 演练下载资源。
 
 1. 直接以超链接的方式下载，不写任何代码。 也能够下载东西下来。 
 
@@ -269,11 +269,11 @@
 
 > 原因是tomcat里面有一个默认的Servlet -- DefaultServlet 。这个DefaultServlet 专门用于处理放在tomcat服务器上的静态资源。
 
-![icon](img/img10.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/javaee-images/day03/img010.png)
 
 
 
-##总结
+### 总结
 
 1. Servlet注册方式 
 
@@ -313,7 +313,7 @@
 6. 下载
 
 
-###作业：
+### 作业：
 
 	
 	1. 完成注册 
