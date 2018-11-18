@@ -12,7 +12,7 @@
 
 3. 数据传输载体
 
-![icon](img/document.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/document.png)
 
 ##定义xml
 
@@ -136,7 +136,7 @@
   <   &lt;
   &   &amp;
 
-如果某段字符串里面有过多的字符， 并且里面包含了类似标签或者关键字的这种文字，不想让xml的解析器去解析。 那么可以使用CDATA来![img](file:///E:/%E9%BB%91%E9%A9%AC_%E5%B0%B1%E4%B8%9A%E7%8F%AD/%E6%96%87%E4%BB%B6%E8%B5%84%E6%96%99/%E8%AF%BE%E4%BB%B6%E8%B5%84%E6%96%99/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5_web%E5%9F%BA%E7%A1%80/day09_XML&tomcat/day09/code&%E8%B5%84%E6%96%99/%E7%AC%94%E8%AE%B0/img/parse_type.png?lastModify=1496374403)包装。  不过这个CDATA 一般比较少看到。 通常在服务器给客户端返回数据的时候。
+如果某段字符串里面有过多的字符， 并且里面包含了类似标签或者关键字的这种文字，不想让xml的解析器去解析。 那么可以使用CDATA来包装。  不过这个CDATA 一般比较少看到。 通常在服务器给客户端返回数据的时候。
 
 	<des><![CDATA[<a href="http://www.baidu.com">我爱黑马训练营</a>]]></des>
 
@@ -153,7 +153,7 @@
 
 * SAX
 
-![icon](img/parse_type.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/parse_type.png)
 
 ###针对这两种解析方式的API
 
