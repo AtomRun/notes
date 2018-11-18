@@ -1,10 +1,10 @@
-#Xml & Tomcat
+# Xml & Tomcat
 
-##Xml
+## Xml
 
 >eXtendsible  markup language  可扩展的标记语言
 
-###XML 有什么用?
+### XML 有什么用?
 
 1. 可以用来保存数据
 
@@ -14,11 +14,11 @@
 
 ![icon](https://github.com/AtomRun/notes/blob/master/noteimages/document.png)
 
-##定义xml
+## 定义xml
 
 > 其实就是一个文件，文件的后缀为 .xml
 
-###. 文档声明
+### 文档声明
 
 		简单声明， version : 解析这个xml的时候，使用什么版本的解析器解析
 		<?xml version="1.0" ?>
@@ -29,7 +29,7 @@
 		standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个独立的文档
 		<?xml version="1.0" encoding="gbk" standalone="no" ?>
 
-###encoding详解
+### encoding详解
 
 > 在解析这个xml的时候，使用什么编码去解析。   ---解码。 
 
@@ -48,7 +48,7 @@
 为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8
 
 
-###元素定义（标签）
+### 元素定义（标签）
 
 1.  其实就是里面的标签， <> 括起来的都叫元素 。 成对出现。  如下： 
 
@@ -84,7 +84,7 @@
 	命名尽量简单，做到见名知义
 
 
-###简单元素  & 复杂元素 
+### 简单元素  & 复杂元素 
 
 * 简单元素 
 
@@ -95,7 +95,7 @@
 > 元素里面还可以嵌套其他的元素
 
 
-###属性的定义
+### 属性的定义
 
 > 定义在元素里面， <元素名称  属性名称="属性的值"></元素名称>
 		<stus>
@@ -111,7 +111,7 @@
 
 
 
-##xml注释：
+## xml注释：
 
 > 与html的注释一样。 
 
@@ -127,7 +127,7 @@
 
 > xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。
 
-##CDATA区
+## CDATA区
 
 * 非法字符
 
@@ -141,11 +141,11 @@
 	<des><![CDATA[<a href="http://www.baidu.com">我爱黑马训练营</a>]]></des>
 
 
-##XML 解析
+## XML 解析
 
 > 其实就是获取元素里面的字符数据或者属性数据。
 
-###XML解析方式(面试常问)
+### XML解析方式(面试常问)
 
 > 有很多种，但是常用的有两种。
 
@@ -155,7 +155,7 @@
 
 ![icon](https://github.com/AtomRun/notes/blob/master/noteimages/parse_type.png)
 
-###针对这两种解析方式的API
+### 针对这两种解析方式的API
 
 > 一些组织或者公司， 针对以上两种解析方式， 给出的解决方案有哪些？
 
@@ -165,7 +165,7 @@
 		dom4j  使用比较广泛
 
 
-###Dom4j 基本用法
+### Dom4j 基本用法
 
 		element.element("stu") : 返回该元素下的第一个stu元素
 		element.elements(); 返回该元素下的所有子元素。 
@@ -226,7 +226,7 @@ Element
 5. 根据平时的积累。  getXXX setXXX 
 
 
-###Dom4j 的 Xpath使用
+### Dom4j 的 Xpath使用
 
 >  dom4j里面支持Xpath的写法。 xpath其实是xml的路径语言，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。
 
@@ -255,7 +255,7 @@ Element
 
 
 
-##XML 约束【了解】
+## XML 约束【了解】
 
 如下的文档， 属性的ID值是一样的。 这在生活中是不可能出现的。 并且第二个学生的姓名有好几个。 一般也很少。那么怎么规定ID的值唯一， 或者是元素只能出现一次，不能出现多次？ 甚至是规定里面只能出现具体的元素名字。 
 
@@ -274,7 +274,7 @@ Element
 			</stu>
 		</stus>
 
-###DTD
+### DTD
 
 	语法自成一派， 早起就出现的。 可读性比较差。 
 
@@ -330,7 +330,7 @@ Element
 		<!ELEMENT stu (name , age)>		按照顺序来 
 
 		<!ELEMENT stu (name | age)>   两个中只能包含一个子元素
-###Schema
+### Schema
 
 	其实就是一个xml ， 使用xml的语法规则， xml解析器解析起来比较方便 ， 是为了替代DTD 。
 	但是Schema 约束文本内容比DTD的内容还要多。 所以目前也没有真正意义上的替代DTD
@@ -387,7 +387,7 @@ Element
 			</teacher>
 		</teachers>
 
-##名称空间的作用
+### 名称空间的作用
 
 一个xml如果想指定它的约束规则， 假设使用的是DTD ，那么这个xml只能指定一个DTD  ，  不能指定多个DTD 。 但是如果一个xml的约束是定义在schema里面，并且是多个schema，那么是可以的。简单的说： 一个xml 可以引用多个schema约束。 但是只能引用一个DTD约束。
 
@@ -400,7 +400,7 @@ Element
 
 
 
-###程序架构
+### 程序架构
 
 网页游戏
 
@@ -430,12 +430,12 @@ Element
 
 	用户体验不佳。 
 
-###服务器
+### 服务器
 
 > 其实服务器就是一台电脑。 配置比一般的要好。
 
 
-###Web服务器软件 
+### Web服务器软件 
 
 > 客户端在浏览器的地址栏上输入地址 ，然后web服务器软件，接收请求，然后响应消息。 
 > 处理客户端的请求， 返回资源 | 信息
@@ -450,7 +450,7 @@ Element
 	IIS   微软
 
 
-###Tomcat安装
+### Tomcat安装
 
 1. 直接解压 ，然后找到bin/startup.bat
 
@@ -461,7 +461,7 @@ Element
 3. 如果双击了startup.bat,  看到一闪而过的情形，一般都是 JDK的环境变量没有配置。 
 
 
-###Tomcat目录介绍
+### Tomcat目录介绍
 
 bin##
 
@@ -492,13 +492,13 @@ work(目前不用管)
 ​	
 
 
-##如何把一个项目发布到tomcat中
+### 如何把一个项目发布到tomcat中
 
 > 需求： 如何能让其他的电脑访问我这台电脑上的资源 。 stu.xml
 
 	localhost : 本机地址
 
-###1.  拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问：
+### 1.  拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问：
 
 		http://localhost:8080/stu.xml
 
@@ -514,7 +514,7 @@ work(目前不用管)
 	
 		http://192.168.37.48:8080/xml/stu.xml
 
-###2. 配置虚拟路径
+### 2. 配置虚拟路径
 
 
 使用localhost：8080 打开tomcat首页， 在左侧找到tomcat的文档入口， 点击进去后， 在左侧接着找到 Context入口，点击进入。
@@ -534,7 +534,7 @@ work(目前不用管)
 3. 在浏览器地址栏上输入： http://localhost:8080/a/person.xml
 
 
-###3. 配置虚拟路径
+### 3. 配置虚拟路径
 
 1. 在tomcat/conf/catalina/localhost/ 文件夹下新建一个xml文件，名字可以自己定义。 person.xml
 
@@ -547,7 +547,7 @@ work(目前不用管)
 
    http://localhost:8080/person/xml的名字即可
 
-###给Eclipse配置Tomcat
+### 给Eclipse配置Tomcat
 
 
 1. 在server里面 右键新建一个服务器， 选择到apache分类， 找到对应的tomcat版本， 接着一步一步配置即可。
@@ -556,7 +556,7 @@ work(目前不用管)
 3. 创建web工程， 在WebContent下定义html文件， 右键工程， run as server 
 
 
-##总结：
+### 总结：
 
 	xml
 

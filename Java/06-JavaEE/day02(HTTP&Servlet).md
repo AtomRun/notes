@@ -1,6 +1,6 @@
-#Http协议&Servlet
+# Http协议&Servlet
 
-#Http协议
+# Http协议
 
 * 什么是协议
 
@@ -22,7 +22,7 @@
 		请求数据，服务器返回后， 连接还会保持着。 除非服务器 | 客户端 关掉。 有一定的时间限制，如果都空着这个连接，那么后面会自己断掉。
 	
 
-###演示客户端 如何 与服务器端通讯。
+### 演示客户端 如何 与服务器端通讯。
 
 > 在地址栏中键入网络地址 回车  或者是平常注册的时候，点击了注册按钮 ， 浏览器都能显示出来一些东西。那么背地里到底浏览器和服务器是怎么通讯。 它们都传输了哪些数据。
 
@@ -49,7 +49,7 @@
 ![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img03.png)
 
 
-###Http请求数据解释 
+### Http请求数据解释 
 
 > 请求的数据里面包含三个部分内容 ： 请求行 、 请求头 、请求体
 
@@ -97,7 +97,7 @@
 		firstname=zhang&lastname=sansan
 
 
-###Http响应数据解析
+### Http响应数据解析
 
 > 请求的数据里面包含三个部分内容 ： 响应行 、 响应头 、响应体
 
@@ -140,13 +140,13 @@
 		Date ： 通讯的日期，响应的时间		
 
 
-##Get 和  Post请求区别
+### Get 和  Post请求区别
 
 ![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img04.png)
 
 * post
 
-		1. 数据是以流的方式写过去，不会在地址栏上面显示。  现在一般提交数据到服务器使用的都是POST
+		1. 数据是以流的方式写过去，不会在地址栏上面显示。现在一般提交数据到服务器使用的都是POST
 	
 		2. 以流的方式写数据，所以数据没有大小限制。
 
@@ -157,7 +157,7 @@
 		2. 能够带的数据有限， 1kb大小
 
 
-###Web资源
+### Web资源
 
 在http协议当中，规定了请求和响应双方， 客户端和服务器端。与web相关的资源。 
 
@@ -172,7 +172,7 @@
 	servlet/jsp
 
 
-##Servlet
+## Servlet
 
 
 * servlet是什么?
@@ -183,7 +183,7 @@
  
 
 
-###Hello Servlet
+### Hello Servlet
 
 1. 得写一个Web工程 ， 要有一个服务器。
 
@@ -211,12 +211,12 @@
 		3. 在地址栏上输入 http://localhost:8080/项目名称/a
 
 
-###Servlet执行过程
+### Servlet执行过程
 
 ![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img05.png)
 
 
-###Servlet的通用写法
+### Servlet的通用写法
 
 		Servlet (接口)
 			|
@@ -233,7 +233,7 @@
 
 
 
-##Servlet的生命周期
+### Servlet的生命周期
 
 * 生命周期
 
@@ -266,7 +266,7 @@
 
 > doGet 和 doPost不算生命周期方法，所谓的生命周期方法是指，从对象的创建到销毁一定会执行的方法， 但是这两个方法，不一定会执行。
 
-###让Servlet创建实例的时机 提前。
+### 让Servlet创建实例的时机 提前。
 
 1. 默认情况下，只有在初次访问servlet的时候，才会执行init方法。 有的时候，我们可能需要在这个方法里面执行一些初始化工作，甚至是做一些比较耗时的逻辑。 
 
@@ -284,7 +284,7 @@
 
 
 
-##ServletConfig
+### ServletConfig
 
 >Servlet的配置，通过这个对象，可以获取servlet在配置的时候一些信息
 
@@ -314,7 +314,7 @@
 			
 		}
 
-###为什么需要有这个ServletConfig
+### 为什么需要有这个ServletConfig
 
 1. 未来我们自己开发的一些应用，使用到了一些技术，或者一些代码，我们不会。 但是有人写出来了。它的代码放置在了自己的servlet类里面。 
 
@@ -327,7 +327,7 @@
 
 
 
-##总结
+### 总结
 
 * Http协议
 	
