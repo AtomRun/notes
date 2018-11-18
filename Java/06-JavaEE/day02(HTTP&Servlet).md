@@ -37,16 +37,16 @@
 
 4. 选择 servlet 例子 ---> Request Parameter
 
-![icon](img/img01.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img01.png)
 
 接着点击Request  Parameters 的 Execute超链接
 
 
-![icon](img/img02.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img02.png)
 
 执行tomcat的例子，然后查看浏览器和 tomcat服务器的对接细节
 
-![icon](img/img03.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img03.png)
 
 
 ###Http请求数据解释 
@@ -142,7 +142,7 @@
 
 ##Get 和  Post请求区别
 
-![icon](img/img04.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img04.png)
 
 * post
 
@@ -213,7 +213,7 @@
 
 ###Servlet执行过程
 
-![icon](img/img05.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img05.png)
 
 
 ###Servlet的通用写法
@@ -229,7 +229,7 @@
 
 1. 定义一个类，继承HttpServlet 复写doGet 和 doPost
 
-![icon](img/img06.png)
+![icon](https://github.com/AtomRun/notes/blob/master/noteimages/img06.png)
 
 
 
