@@ -144,7 +144,7 @@
 
 ```
     5. 此案例我们没有登录页，而是使用了系统自动生成的登陆页，效果如下：
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/SpringSecurity/1.png)
     6. 配置说明：
         1. intercept-url 表示拦截页面
         2. /*  表示的是该目录下的资源，只包括本级目录不包括下级目录
@@ -198,9 +198,11 @@
 		<csrf disabled="true"/>
 	</http>
 ```
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/SpringSecurity/2.png)
     4. 因为登录页会被反复重定向。
         1. login-page：指定登录页面。
         2. authentication-failure-url：指定了身份验证失败时跳转到的页面。
         3. default-target-url：指定了成功进行身份验证和授权后默认呈现给用户的页面。
         4. csrf disabled="true"  关闭csrf ,如果不加会出现错误
-    5. SRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。
+            1. CSRF（Cross-site request forgery）跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/SpringSecurity/3.png)
