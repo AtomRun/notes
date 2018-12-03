@@ -296,6 +296,8 @@ public class UserController {
         1. 给大家下发的资源中有个dubbox-master.zip  ，这个是dubbox的源码，我们可以使用maven命令编译源码得到“管理端”的war包
         2. 将此压缩包解压，在命令符下进入dubbo-admin目录 ，输入maven命令
         3. mvn package -Dmaven.skip.test=true
+        4. 如果你看到如下信息，就说明成功了
+![image]()
     2. 进入target文件夹，你会看到一个dubbo-admin-2.8.4.war ， 在linux服务器上安装tomcat,  将此war包上传到linux服务器的tomcat的webapps下。为了访问方便，你可以把版本号去掉。 启动tomcat后自动解压。
     3. 如果你部署在zookeeper同一台主机并且端口是默认的2181，则无需修改任何配置。如果不是在一台主机上或端口被修改，需要修改WEB-INF下的dubbo.properties  ，修改如下配置：dubbo.registry.address=zookeeper://127.0.0.1:2181
 
