@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>angular6 循环数组</title>
+        <script src="angular.min.js"></script>
+        <script>
+
+            var app=angular.module("myApp",[]);
+         
+            app.controller("myController",function($scope){
+                $scope.list=[102,203,394,555];
+            });
+        </script>
+    </head>
+
+ 
+    <body ng-app="myApp" ng-controller="myController">
+        <!--循环list-->
+        <table>
+            <!--ng-repeat 循环-->
+            <tr ng-repeat="x in list">
+                <td>{{x}}</td>
+            </tr>
+        </table>
+    </body>
+</html>

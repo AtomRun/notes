@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>angular4 控制器</title>
+        <script src="angular.min.js"></script>
+        <script>
+            //1. 建立模块
+            //第一个参数模块名称，第二个参数 数组，可以放其他模块，用到了其他模块就放进去，没有就不用放
+            var app=angular.module("myApp",[]);
+            //2. 通过模块创建控制器，通过controller()方法
+            // 第一个参数，控制器的名称,第二个参数，是一个函数类型
+            app.controller("myController",function($scope){
+                //$Scope就是你的控制层与视图层之间交换数据的桥梁
+                //控制器的内容，类似一个类
+
+                //在控制器中让两个变量相加
+
+                //这句意思就是$scope相当于是一个大对象，.add是往这个对象中添加属性
+                //=function() 意思是这个变量是一个函数类型的,$.scope相当于是public的，视图中也可以调用
+                //但是如果不加就相当于private。只能在内部调用
+                $scope.add=function(){
+                    //获取x,y必须使用$scope
+                    return parseInt($scope.x)+parseInt($scope.y);
+                }
+            });
+        </script>
+    </head>
+
+    <!-- ng-app 启动angular引擎-->
+    <body ng-app="myApp" ng-controller="myController">
+        <!-- ng-model绑定变量 -->
+        第一个数：<input ng-model="x"> 第二个数<input ng-model="y">
+        <!-- 想让这两个数相加 -->
+
+        {{add()}}
+    </body>
+</html>

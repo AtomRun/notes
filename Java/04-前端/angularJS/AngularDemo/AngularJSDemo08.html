@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>angular8 内置服务</title>
+        <script src="angular.min.js"></script>
+        <script>
+
+            //每个服务对应一个功能
+            var app=angular.module("myApp",[]);
+         
+            app.controller("myController",function($scope){
+                $scope.list=[
+                    {name:'张三',shuxue:100,yuwen:100},
+                    {name:'李四',shuxue:94,yuwen:88},
+                    {name:'王五',shuxue:40,yuwen:50}
+                ];
+            });
+        </script>
+    </head>
+
+ 
+    <body ng-app="myApp" ng-controller="myController">
+        <!--循环list-->
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>数学</td>
+                <td>语文</td>
+            </tr>
+
+            <tr ng-repeat="x in list">
+                    <td>{{x.name}}</td>
+                    <td>{{x.shuxue}}</td>
+                    <td>{{x.yuwen}}</td>
+                </tr>
+        </table>
+    </body>
+</html>

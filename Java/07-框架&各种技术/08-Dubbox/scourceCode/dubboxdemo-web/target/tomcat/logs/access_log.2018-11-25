@@ -1,0 +1,3 @@
+127.0.0.1 - - [25/Nov/2018:18:35:43 +0800] "GET /AngularJSDemo08.jsp HTTP/1.1" 200 1169 http-bio-8080-exec-1 628
+127.0.0.1 - - [25/Nov/2018:18:35:43 +0800] "GET /angular.min.js HTTP/1.1" 200 129177 http-bio-8080-exec-3 4
+127.0.0.1 - - [25/Nov/2018:18:35:43 +0800] "GET /data.json HTTP/1.1" 200 197 http-bio-8080-exec-4 2
