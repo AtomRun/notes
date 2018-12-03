@@ -20,10 +20,10 @@
     1. 进入bin目录，启动服务输入命令
         ./zkServer.sh start
         输出以下内容表示启动成功
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/2.png)
     2. 关闭服务输入命令
         ./zkServer.sh stop
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/3.png)
     3. 查看状态：
         ./zkServer.sh status
         如果启动状态，提示
