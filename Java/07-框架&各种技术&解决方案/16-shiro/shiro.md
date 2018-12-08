@@ -24,7 +24,7 @@
     9. RunAs：支持一个用户在允许的前提下使用另外一个身份登录
     10. RememberMe：在会话中记住用户的身份，即记住我
 4. shiro的架构
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/shiro/2.png)
     1. Subject
         1. Subject即主体，外部应用与subject进行交互，subject记录了当前操作用户，将用户的概念理解为当前操作的主体，可能是一个通过浏览器请求的用户，也可能是一个运行的程序。	
         2. Subject在shiro中是一个接口，接口中定义了很多认证授相关的方法，外部程序通过subject进行认证授，而subject是通过SecurityManager安全管理器进行认证授权
@@ -60,7 +60,7 @@
     2. 最常见的principals和credentials组合就是用户名/密码了。接下来先进行一个基本的身份认证。
 
 #### 认证流程
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/shiro/3.png)
 #### 入门程序(用户登录和退出)
 1. 创建java工程
 2. 加入相关jar
@@ -118,7 +118,7 @@ lisi=1111
 #### 自定义Realm
 * Shiro默认使用自带的IniRealm，IniRealm从ini配置文件中读取用户的信息，大部分情况下需要从系统的数据库中读取用户信息，所以需要自定义realm。
 1. Realm接口
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/shiro/4.png)
     1. 最基础的是Realm接口，CachingRealm负责缓存处理，AuthenticationRealm负责认证，AuthorizingRealm负责授权，通常自定义的realm继承AuthorizingRealm。
 2. 自定义Realm实现
 ```java
@@ -257,7 +257,7 @@ securityManager.realms=$userRealm
     4. 角色
         1. 角色代表了操作集合，可以理解为权限的集合，一般情况下我们会赋予用户角色而不是权限，即这样用户可以拥有一组权限，赋予权限时比较方便。典型的如：项目经理、技术总监、CTO、开发工程师等都是角色，不同的角色拥有一组不同的权限。
 2. 授权流程
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/shiro/5.png)
     1. 流程如下
         1. 首先调用Subject.isPermitted*/hasRole*接口，其会委托给SecurityManager，而SecurityManager接着会委托给Authorizer
         2. Authorizer是真正的授权者，如果我们调用如isPermitted(“user:view”)，其首先会通过PermissionResolver把字符串转换成相应的Permission实例
