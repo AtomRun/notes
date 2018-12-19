@@ -71,7 +71,7 @@
 
 ### 动态域
 1. 当我们需要动态扩充字段时，我们需要使用动态域。对于品优购，规格的值是不确定的，所以我们需要使用动态域来实现。需要实现的效果如下：
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/springdatasolr/1.png)
 2. 配置
 ```xml
 <dynamicField name="item_spec_*" type="string" indexed="true" stored="true" />	
@@ -281,7 +281,7 @@ public class TestTemplate {
 
 1. 创建pinyougou-solr-util（jar） ,引入pinyougou-dao  以及spring 相关依赖
 2. 创建spring 配置文件
-![image]()
+![image](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A1%86%E6%9E%B6%26%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AFimages/springdatasolr/2.png)
 3. 内容为：
 ```xml
 <context:component-scan base-package="com.pinyougou.solrutil">
