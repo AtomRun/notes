@@ -42,7 +42,7 @@ public class Demo1_Scanner {
         1. public int nextInt() 获取一个int类型的值
         2. public String nextLine() 获取一个String类型的值
     2. 案例展示
-        1. 先展示获取多个int值，多个String值得情况
+        1. 先展示获取多个int值，多个String值的情况
         2. 再展示获取int值，然后获取String值出现问题
         3. 问题解决方案
             1. 第一种：先获取一个数值后，再创建一个新的键盘录入对象获取字符串
@@ -79,15 +79,14 @@ public class Demo2_Scanner {
 		System.out.println("第一个字符串为："+line1+"，第二个字符串为"+line2);
 		/**
 		 * 当第一个输入方式使用nextInt，第二个数的输入方式改成nextLine的时候第一个数输完之后，直接就执行到最后了
-		 * nextInt是键盘录入整数的方法，当我们录入10的时候，其实在键盘上录入的是10和\r\n，录入10我们
-		 * 要敲一下回车，回车就是\r\n
+		 * nextInt是键盘录入整数的方法，当我们录入10的时候，其实在键盘上录入的是10和\r\n，录入10我们要敲一下回车，回车就是\r\n
 		 * nextInt只获取10就结束了
 		 * nextLine是键盘录入字符串的方法，可以接收任意类型的方法，但是他凭什么能获取一行呢？
 		 * 通过\r\n,只要遇到\r\n就证明一行结束。在这里。如果遇到\r\n，nextLine方法直接就结束了
 		 * 
 		 * 解决方案：
 		 * 1. 创建两个scanner接收不同的数据，但是浪费空间
-		 * 2. 将键盘录入的都是字符串，即都用nextLine方法门后面我们会学习将整数字符串转换成整数的方法 
+		 * 2. 将键盘录入的都是字符串，即都用nextLine方法我们后面我们会学习将整数字符串转换成整数的方法 
 		 */
 	}
 }
@@ -183,32 +182,46 @@ public class Demo2_StringCon {
 ```
 
 ### 5. String类的常见面试题
-    1. 判断定义为String类型的s1和s2是否相等
-        1. String s1 = "abc";
-        2. String s2 = "abc";
-        3. System.out.println(s1 == s2); 
-        4. System.out.println(s1.equals(s2));
+  1. 判断定义为String类型的s1和s2是否相等
+```java
+String s1 = "abc";
+String s2 = "abc";
+System.out.println(s1 == s2); 
+System.out.println(s1.equals(s2));
+```
+
 ![String面试题1](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%981.png)
 
-    2. 下面这句话在内存中创建了几个对象?
-        1. String s1 = new String("abc");
+ 2. 下面这句话在内存中创建了几个对象?
+
+
+```java
+String s1 = new String("abc");
+```
 ![Stgring面试题2](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%982.png)
-    3. 判断定义为String类型的s1和s2是否相等
-        1. String s1 = new String("abc");			
-        2. String s2 = "abc";
-        3. System.out.println(s1 == s2);		
-        4. System.out.println(s1.equals(s2));
-    4. 判断定义为String类型的s1和s2是否相等
-        1. String s1 = "a" + "b" + "c";
-        2. String s2 = "abc";
-        3. System.out.println(s1 == s2);		
-        4. System.out.println(s1.equals(s2));
-    5. 判断定义为String类型的s1和s2是否相等
-        1. String s1 = "ab";
-        2. String s2 = "abc";
-        3. String s3 = s1 + "c";
-        4. System.out.println(s3 == s2);
-        5. System.out.println(s3.equals(s2));
+
+ 3. 判断定义为String类型的s1和s2是否相等
+```java
+String s1 = new String("abc");			
+String s2 = "abc";
+System.out.println(s1 == s2);		
+System.out.println(s1.equals(s2));
+```
+ 4. 判断定义为String类型的s1和s2是否相等
+```java
+String s1 = "a" + "b" + "c";
+String s2 = "abc";
+System.out.println(s1 == s2);		
+System.out.println(s1.equals(s2));
+```
+ 5. 判断定义为String类型的s1和s2是否相等
+```java
+String s1 = "ab";
+String s2 = "abc";
+String s3 = s1 + "c";
+System.out.println(s3 == s2);
+System.out.println(s3.equals(s2));
+```
 ![String面试题5](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%985.png)
 ```java
 package com.leeup.javase.day12.string;

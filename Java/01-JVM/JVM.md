@@ -4,7 +4,7 @@
 
 1. 
 
-   ```
+   ```shell
    λ java -version                
    java version "1.8.0_172"     #java版本号                         
    Java(TM) SE Runtime Environment (build 1.8.0_172-b11)   #java开发环境信息
@@ -25,27 +25,27 @@
 
 1. **类加载子系统与方法区：**类加载子系统负责从文件或者网络中加载Class**[也就是说ClassLoader是我们这个系统下的组件，其实加载进来不是直接就运行了，要经过很多个模块的处理，比如文件的校验，HotsPot的处理]**，加载类的信息存放于一块称为方法区的内存空间**[ClassLoader通过文件将我们Class文件中的字节加载到虚拟机中，保存起来，那么我们Class中的字节就会放到这个方法区中]**。除了类的信息外，方法区中可能还会存放运行时的常量池信息，包括字符串字面量和数字常量(这部分常量信息是Class文件中常量池部分的内存映射)
 
-   1. **总结**：类加载子系统/方法区 这两块的能力就是通过类加载子系统将Class文件加载进来放到方法区内，并且将其中的常量也都存入方法区，或者说方法区中存入的都是唯一的东西/一份的东西
+   1. **总结** ：类加载子系统/方法区 这两块的能力就是通过类加载子系统将Class文件加载进来放到方法区内，并且将其中的常量也都存入方法区，或者说方法区中存入的都是唯一的东西/一份的东西
 
-2. **[重点]Java堆：**java堆在虚拟机启动时就建立，他是java程序最主要的内存工作区域，几乎所有的java对象实例都会存储在java堆中，堆空间是所有线程共享的，这是一块与java应用密切相关的内存空间
+2. **[重点]Java堆：** java堆在虚拟机启动时就建立，他是java程序最主要的内存工作区域，几乎所有的java对象实例都会存储在java堆中，堆空间是所有线程共享的，这是一块与java应用密切相关的内存空间
 
-3. **直接内存：**java的NIO库允许java程序使用直接内存，直接内存是java堆外的直接向系统申请的内存空间。通常访问内存的速度会优于java堆，因此处于性能的考虑，读写频繁的场合可能会考虑使用直接内存，由于直接内存在java堆外，因此它的大小不会受限与Xmx指定的最大堆大小，但是系统内存是有限的，java的堆和直接内存的综合，依然受限于操作系统能够给出的最大内存。
+3. **直接内存：** java的NIO库允许java程序使用直接内存，直接内存是java堆外的直接向系统申请的内存空间。通常访问内存的速度会优于java堆，因此处于性能的考虑，读写频繁的场合可能会考虑使用直接内存，由于直接内存在java堆外，因此它的大小不会受限与Xmx指定的最大堆大小，但是系统内存是有限的，java的堆和直接内存的综合，依然受限于操作系统能够给出的最大内存。
 
-   1. **总结：**其实直接内存并不隶属于java堆的范畴，也就是说他不是被java堆所包含的，java堆的大小是由JVM来控制的，而直接内存是直接映射到物理内存上的，也就是说它理论上的空间是无限的，不受JVM的控制，它的大小限制，取决于你的物理内存的大小。
+   1. **总结：** 其实直接内存并不隶属于java堆的范畴，也就是说他不是被java堆所包含的，java堆的大小是由JVM来控制的，而直接内存是直接映射到物理内存上的，也就是说它理论上的空间是无限的，不受JVM的控制，它的大小限制，取决于你的物理内存的大小。
 
-4. **[重点]垃圾回收系统：**垃圾回收系统是java虚拟机的重要组成部分，垃圾收集器可以对方法区，java堆和直接内存进行回收[它并不只局限于回收java堆，对于方法区和直接内存也是可以回收的]。其中，java堆是垃圾收集器的工作重点。和C/C++不同，java中所有的对象空间释放都是隐式的[对于程序员来说，内存中的管理和释放，都是不透明的]，也就是说，java中没有类似free()或者delete()函数。对于不再使用的垃圾对象，垃圾回收系统会在后台默默的工作，默默查找，标识并且释放垃圾对象，完成包括java堆、方法区和直接内存中的全自动化管理
+4. **[重点]垃圾回收系统：** 垃圾回收系统是java虚拟机的重要组成部分，垃圾收集器可以对方法区，java堆和直接内存进行回收[它并不只局限于回收java堆，对于方法区和直接内存也是可以回收的]。其中，java堆是垃圾收集器的工作重点。和C/C++不同，java中所有的对象空间释放都是隐式的[对于程序员来说，内存中的管理和释放，都是不透明的]，也就是说，java中没有类似free()或者delete()函数。对于不再使用的垃圾对象，垃圾回收系统会在后台默默的工作，默默查找，标识并且释放垃圾对象，完成包括java堆、方法区和直接内存中的全自动化管理
 
-5. **java栈**：每个java虚拟机线程都有私有的java栈，一个线程的java栈在线程创建的时候创建，java栈中保留着帧信息，java栈中保存着局部变量，方法参数，同时和java方法的调用，返回密切相关，
+5. **java栈** ：每个java虚拟机线程都有私有的java栈，一个线程的java栈在线程创建的时候创建，java栈中保留着帧信息，java栈中保存着局部变量，方法参数，同时和java方法的调用，返回密切相关，
 
-6. **本地方法栈：**本地方法栈和java栈非常类似，最大的不同用于于java方法栈用于JVM方法的调用，而本地方法栈则用于本地方法的调用[本地方法NativeMethod]，作为对java虚拟机的重要扩展，java虚拟机允许java直接调用本地方法(通常使用C编写)
+6. **本地方法栈：** 本地方法栈和java栈非常类似，最大的不同用于于java方法栈用于JVM方法的调用，而本地方法栈则用于本地方法的调用[本地方法NativeMethod]，作为对java虚拟机的重要扩展，java虚拟机允许java直接调用本地方法(通常使用C编写)
 
    1. 总结：虚拟机在运行一些内容的时候，其实他有些东西脱离不了操作系统的内容，所以它可能仍然需要调用操作系统的API，那么他在调用操作系统的API在JVM中就被称为本地方法。为什么不同的操作系统提供了不同的版本的JVM，就是因为这块不通用，不同操作系统的结构或者API是不同的，所以他为了能够适用所有的操作系统，那就得写多个虚拟机调用不同的虚拟机中的不同的本地方法
 
-7. **PC寄存器：**PC寄存器是每一个线程的私有空间，java虚拟机会为每一个java线程创建PC寄存器。在任意时刻，一个java线程总是在执行一个方法[线程没有不执行方法的时候，如果不执行方法，那么这个线程就会死掉]，这个方法被称为当前方法，如果当前方法不是本地方法，PC寄存器就会执行当前正在被执行的指令。如果当前方法是本地方法，那么PC寄存器的值就是undefined。
+7. **PC寄存器：** PC寄存器是每一个线程的私有空间，java虚拟机会为每一个java线程创建PC寄存器。在任意时刻，一个java线程总是在执行一个方法[线程没有不执行方法的时候，如果不执行方法，那么这个线程就会死掉]，这个方法被称为当前方法，如果当前方法不是本地方法，PC寄存器就会执行当前正在被执行的指令。如果当前方法是本地方法，那么PC寄存器的值就是undefined。
 
    1. **总结 PC寄存器更多是来区分线程里执行的方法是本地方法还是你的java的自己的方法的作用**
 
-8. **执行引擎：**执行引擎是java中最核心的组件，它负责执行虚拟机的字节码，现代虚拟机为了提高执行效率，会使用即时编译(just in time)技术将方法编译成机器码后再执行。[上面说的HotSpot就是VM的执行器，它和数据库的引擎是类似的含义/概念]
+8. **执行引擎：** 执行引擎是java中最核心的组件，它负责执行虚拟机的字节码，现代虚拟机为了提高执行效率，会使用即时编译(just in time)技术将方法编译成机器码后再执行。[上面说的HotSpot就是VM的执行器，它和数据库的引擎是类似的含义/概念]
 
  **2. JVM堆结构图及分代**
 
@@ -128,18 +128,18 @@
 
   **2. JVM中的垃圾收集器**
 
-    1. **Scavenge GC(次收集) 和 Full GC 的区别(全收集)**
+    1. Scavenge GC(次收集) 和 Full GC 的区别(全收集)
 
          1. 新生代GC(Scavenge GC)：ScavengeGC 指发生在新生代的GC,因为新生代的java对象大多是朝生夕死，所以Scavenge GC非常频繁，一般回收速度也很快，当Eden空间不足为对象分配空间的时候，会触发Scavenge GC。
             1. 一般情况下，当新对象生成时，并且在Eden申请空间失败的时候，就会触发Scavenge GC，对Eden区域进行GC，清除非存活对象，并且把尚且存活的对象移动到Survivor区。然后整理Survivor的两个区。这种方式的GC是对新生代的Eden区进行，不会影响到老年代。因为大部分对象都是从Eden区开始的，同时Eden区不会分配的很大，所以Eden区的GC会频繁进行。因而，一般在这里需要速度快，高效率的算法，使Eden区能够尽快的空闲出来
 
-       2. 老年代GC(Full GC/Major GC)：Full GC是指发生在老年代的GC,出现了Full GC一般会伴随着至少一次的Minor GC(老年代的对象大部分是Minor GC过程中从新生代进入老年代)，比如：分配担保失败。Full GC的速度一般会比Minor GC慢10倍以上。当老年代内存不足或者显式调用System.gc()方法时，会触发Full GC。
+       1. 老年代GC(Full GC/Major GC)：Full GC是指发生在老年代的GC,出现了Full GC一般会伴随着至少一次的Minor GC(老年代的对象大部分是Minor GC过程中从新生代进入老年代)，比如：分配担保失败。Full GC的速度一般会比Minor GC慢10倍以上。当老年代内存不足或者显式调用System.gc()方法时，会触发Full GC。
 
-       3. 次收集
+       2. 次收集
 
             1. 当年轻代堆空间紧张时会被触发，相对于全收集而言，收集间隔较短
 
-       4. 全收集
+       3. 全收集
 
             1. 当老年代或者持久代堆空间满了，会触发全收集操作，可以使用System.gc()[不是立即启动，而是优先启动]方法来显式的启动全收集，全收集一般根据堆大小的不同，需要的时间不尽相同，但一般会比较长，不过，如果全收集时间超过3-5秒钟，那就太长了
 
@@ -172,7 +172,7 @@
 
   2. **老年代收集器**
 
-         1. **Serial Old收集器**
+         1. Serial Old收集器
             1. Serial Old是Serial收集器的老年代版本，同样是单线程收集器，使用“标记整理”算法：Serial Old在运用到老年代的时候，不能使用复制算法了，因为老年代中没有两块区域供你复制
             2. ![img](file:///E:/My Knowledge/temp/cd40e35c-10aa-430e-840f-2fcebc5d5130/128/index_files/95356a94-bddc-48fc-b609-017f29c56bd6.jpg)
 
@@ -187,9 +187,9 @@
            1. CMS是一种以获取最短回收停顿时间为目标的收集器(CMS又称为多并发低暂停的收集器)，基于“标记-清除”算法实现，整个GC分为以下4个步骤“：
 
         2. 1. **初始标记(CMS initial mark)**
-           2. 并发标记(CMS concurrent mark:GC Roots Tracing 过程)
-           3. **重新标记(CMS remark)**
-           4. 并发清除(CMS concurrent sweep:已死对象会就地释放，注意：此处没有压缩)
+           1. 并发标记(CMS concurrent mark:GC Roots Tracing 过程)
+           2. **重新标记(CMS remark)**
+           3. 并发清除(CMS concurrent sweep:已死对象会就地释放，注意：此处没有压缩)
 
         3. 其中两个加粗的步骤(初始/重新)仍需STW，但初始仅只标记一下 GC Roots能够直接关联到对象，速度很快。而重新标记则是为了修正并发标记期间因用户程序继续运行导致标记产生变动那一部分对象的标记记录，虽然一般比初始标记阶段稍长，但要远小于并发标记时间
 
@@ -228,18 +228,18 @@
 
            1. 并发标记阶段(idnex3)
               1. 在与应用程序并发执行的过程会计算活跃度信息
-             2. 这些活跃度信息标识出那些regions最适合在STW期间回收(*which regions will be best to reclaim during an evacuation pause*)
-             3. 不像CMS有清理阶段
+             1. 这些活跃度信息标识出那些regions最适合在STW期间回收(*which regions will be best to reclaim during an evacuation pause*)
+             2. 不像CMS有清理阶段
 
-            2. 再次标记阶段(index4)
+            1. 再次标记阶段(index4)
 
                1. 使用Snapshot-at-the-Beginning(SATB)算法比CMS快得多
               2. 空region直接被回收
 
-            3. 拷贝/清理阶段(Copying/Cleanup phase)
+            2. 拷贝/清理阶段(Copying/Cleanup phase)
 
                1. 年轻代与老年代同时回收
-              2. 老年代内存回收会基于他的活跃度信息
+              3. 老年代内存回收会基于他的活跃度信息
 
  
 
@@ -261,29 +261,29 @@
 
   **2. JVM参数介绍[命令肯定是虚拟机启动时给定的，而不是运行时给定的，在eclipse中可以体现为run As- run Configurations- Arguments中填写参数]**
 
-    1. **内存大小设置**
+    1. 内存大小设置
 
          1. -Xms:初始堆大小 [包含了Eden、Old整个堆的大小，他会根据给定的大小分配年轻代，老年代，持久代]
-       2. -Xmx:最大堆大小 [初始堆不够的时候，他会申请，最大能够申请的容量大小]
-       3. -XX:NewSize=n:设置年轻代大小
-       4. -XX:NewRatio=n:设置年轻代和老年代的比值。如：为3，表示年轻代和老年代的比值为1:3,年轻代占整个年轻代和老年代的1/4
-       5. -XX:SurvivorRation=n:年轻代中Eden区与两个Survivor区的比值。注意Survivor区有两个。如：3，表示Eden区：Survivor=3:2,一个Survivor区占整个年轻代的1/5
-       6. -XX:MaxPermSize=n:设置持久代大小
+       1. -Xmx:最大堆大小 [初始堆不够的时候，他会申请，最大能够申请的容量大小]
+       2. -XX:NewSize=n:设置年轻代大小
+       3. -XX:NewRatio=n:设置年轻代和老年代的比值。如：为3，表示年轻代和老年代的比值为1:3,年轻代占整个年轻代和老年代的1/4
+       4. -XX:SurvivorRation=n:年轻代中Eden区与两个Survivor区的比值。注意Survivor区有两个。如：3，表示Eden区：Survivor=3:2,一个Survivor区占整个年轻代的1/5
+       5. -XX:MaxPermSize=n:设置持久代大小
 
     2. 收集器设置
 
          1. -XX:+UseSerialGC:设置串行收集器
-       2. -XX:+UseParallelGC:设置并行收集器
-       3. -XX:+UseParallelOldGC:设置并行老年代收集器
-       4. -XX:+UseConcMarkSweepGC:设置并发收集器
-       5. -XX:+UseG1GC:设置G1收集器
+       1. -XX:+UseParallelGC:设置并行收集器
+       2. -XX:+UseParallelOldGC:设置并行老年代收集器
+       3. -XX:+UseConcMarkSweepGC:设置并发收集器
+       4. -XX:+UseG1GC:设置G1收集器
 
     3. 垃圾回收统计信息
 
          1. -XX:+PrintGC
-       2. -XX:+Printetails
-       3. -XX:PrintGCTimeStamps
-       4. -XXloggc:filename
+       1. -XX:+Printetails
+       2. -XX:PrintGCTimeStamps
+       3. -XXloggc:filename
 
  
 
@@ -315,24 +315,24 @@
     2. 吞吐量优先的并行收集器
 
          1. 并行收集器主要以达到一定的吞吐量为目标，适用于科学技术和后台处理等
-       2. **典型配置**
+       1. 典型配置
 
             1. java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:+ParallelGCThreads=20
             2. 1. -XX:+UseParallelGC:选择垃圾收集器为并行收集器。此配置仅对年轻代有效。即上述配置下，**年轻代使用并发收集，而老年代仍旧使用串行收集**
 
-             2. -XX:ParallelGCThreads=20:配置并行收集器的线程数，即:同事多少个线程一起进行垃圾回收。此值最好配置与处理器数目相等。
+             1. -XX:ParallelGCThreads=20:配置并行收集器的线程数，即:同事多少个线程一起进行垃圾回收。此值最好配置与处理器数目相等。
 
-             3. java-Xmx3550m-Xms3550m-Xmn2g-Xss128K -XX:＋UseParallelGC -XXParallelGCThreads＝20 **-XX:＋UseParalleloldGC** 
+             2. java-Xmx3550m-Xms3550m-Xmn2g-Xss128K -XX:＋UseParallelGC -XXParallelGCThreads＝20 **-XX:＋UseParalleloldGC** 
 
                 1. **xx:＋UseParallelOldGC:**配置年老代垃圾收集方式为并行收集。JDK6.0持对年老代并行收集
 
-             4. java -Xmx3550m -Xms3550m -Xmn2g -Xss128k -XX＋UseParalleIGC-XX:MaxGCPauseMillis＝100
+             3. java -Xmx3550m -Xms3550m -Xmn2g -Xss128k -XX＋UseParalleIGC-XX:MaxGCPauseMillis＝100
 
                 1. **-XX:MaxGCPauseMillis＝100**:设置每次年轻代垃圾回收的最长时间，如果无法满足此时间，JVM会自动调整年轻代大小，以满足此值。
 
-             5. java-Xmx3550m-Xms3550m-Xmn2g-Xss128k
+             4. java-Xmx3550m-Xms3550m-Xmn2g-Xss128k
 
-             6. -XX:＋UseParallelGC -XX:MaxGCPauseMillis＝100 **-XX:＋UseAdaptiveSizePolicy**
+             5. -XX:＋UseParallelGC -XX:MaxGCPauseMillis＝100 **-XX:＋UseAdaptiveSizePolicy**
 
                 1. **-XX:＋UseAdaptiveSizePolicy** 设置此选项后，并行收集器会自动选择年轻代区和大小和相应的Survivor区比例，以达到目标系统规定的最低相应时间或者收集频率等，此值建议使用并行收集器时，一直打开。
                 2. 响应时间优先的并行收集器如上文所述，并发收集器主要是保证系统的响应时间，减少垃圾收集时的停顿时间，适用于应用服务器、电信领域等
