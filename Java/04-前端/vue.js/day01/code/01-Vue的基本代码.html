@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 1. 导入Vue的包-->
+    <script src="../code/lib/vue-2.4.0.js"></script>
+</head>
+<body>
+
+    <!-- 将来new的Vue实例，会控制这个元素中的所有内容-->
+    <div id="app">
+        <p>{{msg}}</p>
+        <!-- data中的所有属性都可以在这里直接引用使用{{}}表达式 -->
+    </div>
+    <!-- vUE实例控制的这个元素区域，就是我们MVVM中的V-->
+
+    <script>
+        //2. 创建一个Vue的实例 
+        // 注意，在我们导入这个包之后，在我们浏览器的内存中，就多了一个Vue构造函数，既然是构造函数，我们就可以直接new它
+        
+        //注意：我们new 出来的vm对象就是我们MVVM中的VM调用者
+        //为什么我们的p能够有数据呢？就是这个VM帮我们渲染的
+        var vm = new Vue({
+            el:'#app',   //表示当前我们new的这个Vue实例，要控制页面上的哪个区域，即Element.
+            //上面这样写即将来vm实例要去控制id为app的元素中的所有内容。
+
+            //当前页面的数据都在data中存着，所以data就是MVVM中的M，专门用来保存每个页面的数据
+            data:{
+                //data属性中，存放的是el中要用到的数据
+                msg:'欢迎学习Vue'//使用vue提供的指令，很方便的把数据渲染进来，不用手动操作dom，
+                //【前端的Vue之类的框架，不提倡我们手动操作Dom元素】
+            }
+        })
+    </script>
+</body> 
+</html>

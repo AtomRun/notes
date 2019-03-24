@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-clock 能够解决 插值表达式闪烁的问题 ,即党网速过慢时<p>标签中会展示出{{msg}}字眼-->
+        <p v-clock> {{msg}}</p>
+        <h4 v-text="msg"></h4>
+        <!-- 默认v-text没有闪烁问题，因为没有使用插值表达式，直接写到属性中了
+        但是v-text会覆盖元素中原本的内容，但是插值表达式只会替换自己的这个占位符，不会把整个元素的内容清空 -->
+
+        <div>
+            <!-- {{msg2}} 想要渲染H1表达式，插值表达式无法解析，v-text也是，都会将内容作为普通文本输出 如果想输出要用v-html-->
+        </div>
+        <div v-html="msg2"></div>
+
+        <!-- v-bind 是vue中，提供的用于绑定属性的指令-->
+        <!-- v-bind 还可以将title当作一个变量来加上表达式，vue解析到这一行会将后面的当作表达式来解析，将结果当作title输出 -->
+        <!-- <input type="button" value="按钮" v-bind:title="mytitle+'123'"/> -->
+        <!-- v-bind指令可以被简写为一个英文冒号，后面写上要被绑定的属性-->
+        <!-- v-bind中可以写合法的JS表达式 -->
+        <input type="button" value="按钮1" :title="mytitle+'123'" id="btn"/>
+
+        <!--Vue中提供了v-on表达式，即事件绑定机制-->
+        <!-- 在这里写了v-on事件之后，vue会把alert当作一个变量去vm中找，找不到的话，就会报错，所以我们必须定义一个alert -->
+        <!-- <input type="button" value="按钮2" v-on:click="alert('Hello')"/> -->
+        <input type="button" value="按钮2" v-on:click="show()"/>
+        <input type="button" value="按钮3" v-on:mouseover="show()"/>
+    </div>
+
+    <!-- 1. 导入Vue的包-->
+    <script src="../code/lib/vue-2.4.0.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                msg:'123',
+                msg2:'<h1>哈哈，我是一个大大的H1<h1/>',
+                mytitle:'这是一个自己定义title'
+            },
+            // 一般在js中带s的都是数组， 但是在这里比较特殊，他是一个对象，与el/data平级
+            // 这个methods属性中定义了当前Vue实例中所有可用的方法
+            methods:{
+                show:function(){
+                    alert('Hello');
+                }
+            }
+        }) 
+
+        // 如果想要做一个点击按钮输出一句话， 使用原始的方式是这么写的，首先button定义一个id
+        //根据id获取对象操作Dom
+        document.getElementById("btn").onclick =function(){
+            alert("Hello");
+        }
+
+        //使用Vue提供的方法不操作Dom
+    </script>
+</body>
+</html>
+
+<!-- 目前学了那些东西-->
+<!-- 
+    1. 如何定义一个基本的Vue代码结构
+    2. 插值表达式和v-text之间的区别和用法
+    3. v-clock 解决插值表达式闪烁的问题
+    4. v-html和v-text比较类似。可以覆盖原有标签中的内容
+    5. v-bind Vue提供的属性绑定机制 缩写为:
+    6. v-on Vue提供的事件绑定机制  缩写为@ 即@click
+-->
