@@ -555,7 +555,7 @@ class Printer2 {
 	
 	//静态的同步方法的锁对象是什么？
 	//是该类的字节码对象
-	public synchronized void priint1() {		//同步方法只需要在方法上添加synchronized关键字即可 
+	public static synchronized void priint1() {		//同步方法只需要在方法上添加synchronized关键字即可 
 			System.out.print("我");
 			System.out.print("爱");
 			System.out.print("祖");
