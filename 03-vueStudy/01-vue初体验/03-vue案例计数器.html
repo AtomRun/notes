@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>当前计数: {{counter}}</h2>
+        <!-- 设置点击之后counter++，这里变量++，响应式的缘故，标签中展示也会增加 -->
+        <!-- <button v-on:click="counter++">+</button>
+        <button v-on:click="counter--">-</button> -->
+
+
+        <!-- 调用下面定义的函数 -->
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                // 定义计数器默认为0
+                counter: 0 
+            },
+            methods:{
+                add:function () {
+                    //不能这么写，如果直接写找的就是全局的变量，会not define
+                    //counter++
+
+                    //这里this代表当前对象即app即app.counter
+                    this.counter++;
+                    console.log("add被执行");
+                },
+                sub:function () {
+                    this.counter--;
+                    console.log("sub被执行")
+                }
+            }
+        })
+
+        // jquery命令式编程，
+        // 1.先拿元素
+        // 2. 添加监听事件
+        // 3. 作出处理
+
+        // 声明式编程
+        // 直接使用vue的语法v-On:Click即可调用单击事件
+    </script>
+</body>
+</html>

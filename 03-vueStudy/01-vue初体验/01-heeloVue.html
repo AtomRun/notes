@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            color: red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="div1">
+        {{msg}}
+        <div>
+            <input type="text" v-model="info"/>
+            <!-- v-on:Click 可以简写为@Click -->
+            <button @click="handleClick">添加</button>
+        </div>
+        <ul>
+            <!-- 循环list并将值放到item中 -->
+            <!-- <li v-for="item in list">{{item}}</li> -->
+
+            <!-- li可能会根据需求的增长而改变即不仅仅展示一个值，可能要添加图片图标等，可能还会不止一处用到一个相同的li，这个时候我们要引入
+                vue中组件的形式
+                即不使用html的原生标签，使用我们自定义的标签，即组件
+            -->
+
+            <!-- 使用下面的自定义组件 -->
+            <!-- 单独定义item将其和组件中的item绑定 -->
+            <!-- v-bind:item="item" 可以简写为 :item="item" -->
+            <todo-item v-for="item in list" :item="item"></todo-item>
+            
+        </ul>
+    </div>
+
+
+    
+    <script>
+        
+        // 使用组件的方式
+        // 第一个参数，给自定义标签起个名字，第二个参数是组件的配置，和下面的对象的值很类似
+        Vue.component('todo-item',{
+
+            //定义属性
+            props:['item'],
+
+            // 设置模板
+            // 如果只写一个template的话，使用下面的item插值语法会提示item未定义，我们需要定义
+            // 可以定制模板class
+            template:'<li class="item">{{item}}</li>'
+
+        })
+
+        new Vue ({
+            el :'#div1',
+            data(){
+                return {
+                    msg:'hello geekTime',
+                    // v-model定义的info和上面定义的info是双向绑定的，当input的值发生变化的时候，data中的数据也会发生变化，相反亦然
+                    info:'',
+                    //定义成数组
+                    list:[],
+                }
+            },
+            // 定义方法
+            methods:{
+                handleClick(){
+                    //输出从input接受的info值到控制台
+                    //这里要使用this.info是因为这里this指的是vue实例，调用上面data中的info，而直接写info就是全局变量
+                    console.log(this.info);
+                    //点击的时候更改数组，这样上面的v-for就可以循环数组里的值到li中
+
+
+                    // this.list(this.info); 直接这样写会提示this.list not a function()
+                    this.list.push(this.info) // 将数据push到数组中
+
+                    //设置每次添加之后将input框清空，这里直接将info清空，双向绑定会直接将v-model绑定的input也清空
+                    this.info=""
+                }
+            }
+        });
+    </script>
+</body>
+</html>

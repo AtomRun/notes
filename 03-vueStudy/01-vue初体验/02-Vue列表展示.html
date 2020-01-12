@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 如果是下面这种展示方式，那么就会以json方式展示在页面 -->
+        <!-- {{movies}} -->
+
+        <!-- 使用ul加li展示,太麻烦而且太难以维护 -->
+        <!-- <ul>
+            <li>{{movies[0]}}</li>
+            <li>{{movies[1]}}</li>
+            <li>{{movies[2]}}</li>
+            <li>{{movies[3]}}</li>
+        </ul> -->
+
+        <!-- 使用v-for,必须是vue实例赋予的标签中才可以使用 -->
+        <ul>
+            <!-- 将movies遍历每个值放到item中，li直接取item的值 -->
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        // es6中 弃用var定义变量，使用const定义常量即不可二次修改，使用let定义变量
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'你好',
+                // 响应式的数据，这里数据添加，li中的数据也会对应增加
+                movies:['海贼王','复仇者联盟','飞天小神将','盗梦空间']
+            }
+        })
+    </script>
+</body>
+</html>
