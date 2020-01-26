@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+      <h2>{{message}}</h2>
+
+      <!--  设想如果vue实例中message的值改变了，那么页面的数据也会改变，假设只需要展示一次，就可以使用v-once -->
+      <h2 v-once>{{message}}</h2>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el : "#app",
+        data:{
+        message: '你好'
+        }
+      })
+    </script>
+</body>
+</html>

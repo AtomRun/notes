@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div v-if="books.length" id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>书籍名称</th>
+                    <th>出版日期</th>
+                    <th>价格</th>
+                    <th>购买数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in books">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.date}}</td>
+
+                    <!--使用函数的方式-->
+                    <!--<td>{{getFinalPrice(item.price)}}</td>-->
+
+                    <!--使用过滤器的方式-->
+                    <td>{{item.price | showPrice}}</td>
+                    <td>
+                        <!-- :disabled="item.count <=1" 直接设置按钮<0不能交互 -->
+                        <button :disabled="item.count <=1" @Click="decrement(index)">-</button>
+                        {{item.count}}
+                        <button @Click="increment(index)">+</button>
+                    </td>
+                    <td><button @Click="removeHandle(index)">移除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>总价格：{{totalPrice|showPrice}}</h2>
+        <h2 v-else>购物车为空</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <script>
+    <!--    设置保留两位小数-->
+    </script>
+</body>
+</html>

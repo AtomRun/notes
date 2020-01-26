@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <div id="app">
+          <h2>{{url}}</h2>
+          <h2 v-html="url"></h2>
+      </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+          const vue = new Vue({
+            el : "#app",
+            data:{
+            message: '你好',
+            url:'<a href="www.baidu.com">百度一下</a>'
+            }
+          })
+        </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!--创建出来以下几个组件实例，他们并没有使用同一个data对象，他们是分开的-->
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <div>我是组件</div>
+      <h2>当前计数{{counter}}</h2>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+    </div>
+  </template>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+
+    // 1. 注册组件
+    Vue.component('cpn',{
+        template:'#cpn',
+        data(){
+            return {
+              counter:0
+            }
+        },
+        methods:{
+            increment() {
+                this.counter++
+            },
+            decrement() {
+                this.counter--
+            }
+        }
+    })
+
+    const vue = new Vue({
+      el : "#app",
+       data:{
+          message:'你好'
+       }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!-- 当他们都是true的时候都会展示，但是当属性值为false的时候，v-show使用了display：hidden的方式
+    这个时候这个元素就不会存在于Dom中
+    -->
+    <h2 v-if="isShow" id="aaa"></h2>
+    <h2 v-show="isShow" id="bbb"></h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el : "#app",
+     data:{
+        message :'你好啊',
+         isShow:true
+     }
+  })
+</script>
+</body>
+</html>

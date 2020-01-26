@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 语法糖:src 或者:href-->
+
+        <!-- 这里不能直接在src中使用插值表达式 -->
+        <!-- 应使用v-bind语法绑定src属性 -->
+        <img v-bind:src="imageURL" alt="">
+        <a v-bind:href="url">百度一下2</a>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el : "#app",
+         data:{
+           message: '你好',
+           imageURL :'https://img14.360buyimg.com/n0/jfs/t1/50091/21/14800/240444/5dbbad8cEa1e5cc9f/e56a7d32a564836e.jpg',
+           url : 'http://www.baidu.com'
+         }
+      })
+    </script>
+</body>
+</html>

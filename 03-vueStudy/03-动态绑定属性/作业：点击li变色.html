@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-bind:class="{active:true}" v-for="item in movies">{{item}}</li>
+            <h2>------------------------------------------------</h2>
+            <li :class="liClick(index)" v-for="(item,index) in movies">{{item}}</li>
+
+            <li v-for="(item,index) in movies" v-bind:class="{red:isred===index}" @click="change(index)"></li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el : "#app",
+         data:{
+           movies:['阿童木','小女警','小红帽'],
+           isActive:true
+         },
+          methods:{
+              liClick: function () {
+                    this.isActive = !this.isActive;
+              },
+              getClass: function () {
+
+              }
+          }
+      })
+    </script>
+</body>
+</html>
