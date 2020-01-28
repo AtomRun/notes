@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <cpn :number1="num1" :number2="num2"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>props:{{number1}}</h2>
+      <h2>data:{{dnumber1}}</h2>
+      <!--<input type="text" v-model="dnumber1">-->
+      <input type="text" :value="dnumber1" @input="num1Input">
+      
+      <h2>props:{{number2}}</h2>
+      <h2>data:{{dnumber2}}</h2>
+      <!--<input type="text" v-model="dnumber2">-->
+      <input type="text" :value="dnumber2" @input="num2Input">
+    </div>
+  </template>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const vue = new Vue({
+      el : "#app",
+       data:{
+          num1:1,
+          num2:0,
+       },
+       components:{
+          cpn:{
+            template: '#cpn',
+            props:{
+                number1:Number,
+                number2:Number,
+            },
+            data(){
+                return {
+                    dnumber1:this.number1,
+                    dnumber2:this.number2
+                }
+            },
+            methods:{
+                num1Input(event){
+                    this.dnumber1 = event.target.value;
+                },
+                num2Input(event){
+                    this.dnumber2 = event.target.value;
+                }
+            }
+          }
+       }
+    })
+  </script>
+</body>
+</html>

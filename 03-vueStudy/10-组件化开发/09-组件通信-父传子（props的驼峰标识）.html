@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 目前v-bind不支持驼峰法则-->
+    <cpn :cinfo="info"> </cpn>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <template id="cpn">
+    <h2>{{cinfo}}</h2>
+  </template>
+  <script>
+
+
+    const cpn ={
+        template:'#cpn',
+        props:{
+          cinfo:{
+              type: Object,
+              default(){
+                  return { }
+            }
+        }
+      }
+    }
+
+    const vue = new Vue({
+      el : "#app",
+       data:{
+          info:{
+              name:'cLee',
+              age:18,
+              height:1.8
+          }
+       },
+        components:{
+          cpn,
+        }
+    })
+  </script>
+</body>
+</html>
