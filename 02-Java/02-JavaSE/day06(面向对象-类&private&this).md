@@ -9,7 +9,7 @@
         1. 买煎饼果子
         2. 洗衣服
 
-![面向对象概述](https://github.com/AtomRun/notes/blob/master/00-00-noteimages/Object-oriented%20overview.png)
+![面向对象概述](https://github.com/AtomRun/notes/blob/master/00-noteimages/Object-oriented%20overview.png)
 
     4. 面向对象思想特点
         1. 是一种更符合我们思想习惯的思想
