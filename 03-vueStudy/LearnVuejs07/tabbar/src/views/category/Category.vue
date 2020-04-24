@@ -1,5 +1,5 @@
 <template>
-  $END$
+  <h2>分类</h2>
 </template>
 
 <script>

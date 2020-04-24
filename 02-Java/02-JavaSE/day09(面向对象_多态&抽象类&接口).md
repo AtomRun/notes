@@ -59,7 +59,7 @@ class Son extends Father{
 	int num  = 20;
 }
 ```
-![多态中的成员变量](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png)
+![多态中的成员变量](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png)
 
 ### 3. 多态中的成员访问特点之成员方法
     1. 成员方法
@@ -107,7 +107,7 @@ class Son extends Father{
 	}
 }
 ```
-![多态中的成员方法](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95.png)
+![多态中的成员方法](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95.png)
 
 ### 4. 多态中的成员访问特点之静态方法
     1. 静态方法[之前说过静态方法不叫重写]

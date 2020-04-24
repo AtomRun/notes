@@ -1,4 +1,4 @@
-## 网络编程
+# 网络编程
 
 ### 01. 网络编程概述(了解)
     1. 计算机网络
@@ -143,7 +143,7 @@ public class Demo1_Send {
                 System.out.println(ip + ":" + new String(arr,0,len));
             }
     * 发送端Send
-
+    
             DatagramSocket socket = new DatagramSocket();		//创建socket相当于创建码头
             Scanner sc = new Scanner(System.in);
             
@@ -171,7 +171,7 @@ public class Demo1_Send {
 			}
 		
 		}
-
+	
 		class Receive extends Thread {
 			public void run() {
 				try {
@@ -191,7 +191,7 @@ public class Demo1_Send {
 				}
 			}
 		}
-
+	
 		class Send extends Thread {
 			public void run() {
 				try {
@@ -277,14 +277,14 @@ class Send extends Thread {
 }
 ```
 ### 09. UDP聊天图形化界面
-	
+
 
 ### 10. UDP聊天发送功能
-	
-		
+
+
 ### 11. UDP聊天记录功能
-	
-	
+
+
 ### 12. UDP聊天清屏功能
 
 

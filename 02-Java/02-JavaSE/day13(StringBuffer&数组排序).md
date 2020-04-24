@@ -357,7 +357,7 @@ public class Test2 {
         2. StringBuffer和StringBuilder的区别
             1. StringBuffer是jdk1.0版本的，是线程安全的，效率比较低
             2. StringBuilder是jdk1.5版本的，是线程不安全全的，效率比较高
-
+    
         3. String和StringBuffer,StringBuilder的区别
             1. String是一个不可变的字符序列
             2. StringBuffer和StringBuilder是可变的字符序列
@@ -419,7 +419,7 @@ public class Demo7_StringBuffer {
             2.  请对数组元素进行排序
             3. 冒泡排序
                 1. 相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处
-![数组高级冒泡排序原理图解](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
+![数组高级冒泡排序原理图解](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
 ### 13. 数组高级冒泡排序以及代码实现
     1. 案例展示
         1. 数组高级冒泡排序代码
@@ -479,7 +479,7 @@ public class Demo1_Array {
             2. 请对数组元素进行排序
             3. 选择排序
                 1. 从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在了最小索引处
-![数组高级选择排序原理图解](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
+![数组高级选择排序原理图解](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
 ### 15. 数组高级选择排序代码实现
     1. 案例展示
         1. 数组高级选择排序代码
@@ -553,7 +553,7 @@ public class Demo2_Array {
     1. 画图展示
         1. 二分查找
         2. 前提：数组元素有序
-![数组高级二分查找原理图解](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
+![数组高级二分查找原理图解](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%95%B0%E7%BB%84%E9%AB%98%E7%BA%A7%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.png)
 
 ### 17. 数组高级二分查找代码实现及注意事项
     1. 案例展示

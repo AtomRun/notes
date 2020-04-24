@@ -356,7 +356,7 @@ class Student{
 	}
 }
 ```
-![对象创建过程做了哪些事](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![对象创建过程做了哪些事](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%9B%BE.png)
 
 ### 7. 长方形案例练习
     1. 案例展示
@@ -497,7 +497,7 @@ class Employee{
         1. 通过一个案例引入static关键字
         2. 人类：Person，每个人都有国籍，中国
     2. 画图展示
-![static关键字及其内存图](https://github.com/AtomRun/notes/blob/master/noteimages/%E9%9D%99%E6%80%81%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![static关键字及其内存图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E9%9D%99%E6%80%81%E5%86%85%E5%AD%98%E5%9B%BE.png)
 ```java
 package com.leeup.javase.day07.static1;
 

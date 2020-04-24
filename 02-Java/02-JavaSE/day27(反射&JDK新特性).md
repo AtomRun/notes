@@ -48,7 +48,7 @@
         3. Class类中静态方法forName(),读取配置文件
     3. 案例展示
         1. 获取class文件对象的三种方式
-![反射概述](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png)
+![反射概述](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png)
 
 ```java
 package com.leeup.javase.day27.reflect;

@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+  <div id="app">
+      <cpn><button>按钮1</button></cpn>
+      <cpn><span>哈哈哈</span></cpn>
+      <cpn><i>呵呵</i></cpn>
+      <cpn><button>按钮2</button></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>我是组件</h2>
+      <p>我是组件哈哈哈</p>
+      <!--下面这种方式如果指定了就是会显示指定的东西，没有指定就显示button-->
+      <slot><button>按钮</button></slot>
+    </div>
+  </template>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const vue = new Vue({
+      el : "#app",
+       data:{
+          message:'你好'
+       },
+       components:{
+         // 组件的名字
+         cpn:{
+             template:'#cpn'
+         }
+       }
+    })
+  </script>
+
 </body>
 </html>

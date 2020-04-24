@@ -6,18 +6,9 @@
 </head>
 <body>
   <div id="app">
-    <cpn></cpn>
+
   </div>
 
-  <!--  script标签。类型必须是text/x-template-->
-<!--<script type="text/x-template" id="cpn">-->
-<!--  <div>-->
-<!--    <h2>我是标题</h2>-->
-<!--    <p>我是内容</p>-->
-<!--  </div>-->
-<!--</script>-->
-
-<!--  2. template标签 -->
 <template id="cpn">
   <div>
     <h2>我是标题</h2>
@@ -29,15 +20,16 @@
 <script>
 
   // 注册一个全局组件
-  Vue.component('cpn',{
+  const cpn = Vue.component('cpn',{
       template:'#cpn'
   })
 
   const vue = new Vue({
     el : "#app",
-     data:{
-        message:'你好'
-     }
+    template: '<cpn/>',
+    components:{
+        cpn
+    }
   })
 </script>
 </body>

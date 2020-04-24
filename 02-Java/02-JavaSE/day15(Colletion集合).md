@@ -12,11 +12,11 @@
             for (int i = 0; i < arr.length; i++) {
                 System.out.println(arr[i]);
             }
-		
+    	
     2. 画图演示
         1. 把学生数组的案例画图讲解
         2. 数组和集合存储引用数据类型,存的都是地址值
-![数组存储引用数据类型](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%95%B0%E7%BB%84%E5%AD%98%E5%82%A8%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png)
+![数组存储引用数据类型](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%95%B0%E7%BB%84%E5%AD%98%E5%82%A8%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png)
 ### 02. 集合的由来及集合继承体系图
     1. 集合的由来
         1. 数组长度是固定,当添加的元素超过了数组的长度时需要对数组重新定义,太麻烦,java内部给我们提供了集合类,能存储任意对象,长度是可以改变的,随着元素的增加而增加,随着元素的减少而减少 
@@ -36,7 +36,7 @@
         1. 某些集合底层使用数组实现的，集合默认长度先为10，长度不够的时候，使用数组的方法扩容1.5倍，将原来的数据复制进来，原来的数组对象就变成垃圾
         2. 所以我们固定的数据用数组，变动的用集合
     6. 集合继承体系图
-![集合体系图](https://github.com/AtomRun/notes/blob/master/noteimages/%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB%E5%9B%BE.png)
+![集合体系图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB%E5%9B%BE.png)
 
 ### 03. Collection集合的基本功能测试
     1. 案例演示	
@@ -49,7 +49,7 @@
             boolean contains(Object o)
             boolean isEmpty()
             int size()
-
+    
     2. 注意:
         1. 
             collectionXxx.java使用了未经检查或不安全的操作.
@@ -125,8 +125,9 @@ public class Demo2_Collection {
     2. 案例演示
         1. 把集合转成数组，可以实现集合的遍历
         toArray()
-	
-		
+
+
+​		
 			Collection coll = new ArrayList();
 			coll.add(new Student("张三",23));		//Object obj = new Student("张三",23);
 			coll.add(new Student("李四",24));
@@ -186,13 +187,13 @@ public class Demo3_Collection {
 
 ### 05. Collection集合的带All功能测试
     1. 案例演示
-
-		带All的功能演示
-		
-		boolean addAll(Collection c)
-		boolean removeAll(Collection c)
-		boolean containsAll(Collection c)
-		boolean retainAll(Collection c)
+    
+    	带All的功能演示
+    	
+    	boolean addAll(Collection c)
+    	boolean removeAll(Collection c)
+    	boolean containsAll(Collection c)
+    	boolean retainAll(Collection c)
 ```java
 package com.leeup.javase.day15.collection;
 
@@ -304,19 +305,19 @@ public class Demo4_Collection {
     1. 迭代器概述
         1. 集合是用来存储元素,存储的元素需要查看,那么就需要迭代(遍历) 
     2. 案例演示
-	    迭代器的使用
-		
-			Collection c = new ArrayList();
-			c.add("a");
-			c.add("b");
-			c.add("c");
-			c.add("d");
-			
-			Iterator it = c.iterator();						//获取迭代器的引用
-			while(it.hasNext()) {							//集合中的迭代方法(遍历)
-				System.out.println(it.next());
-			}
-			
+        迭代器的使用
+    	
+    		Collection c = new ArrayList();
+    		c.add("a");
+    		c.add("b");
+    		c.add("c");
+    		c.add("d");
+    		
+    		Iterator it = c.iterator();						//获取迭代器的引用
+    		while(it.hasNext()) {							//集合中的迭代方法(遍历)
+    			System.out.println(it.next());
+    		}
+
 ### 07. Collection存储自定义对象并遍历)
 1. 案例演示
 	* Collection存储自定义对象并用迭代器遍历
@@ -401,7 +402,7 @@ public class Demo5_Iterator {
 		}
 	}
 }
-```	
+```
 
 ### 08. 迭代器的原理及源码解析
     1. 迭代器原理
@@ -503,18 +504,18 @@ public class Demo6_List {
 
 ### 10. List集合存储学生对象并遍历
     1. 案例演示
-	    通过size()和get()方法结合使用遍历。
-
-			List list = new ArrayList();
-			list.add(new Student("张三", 18));
-			list.add(new Student("李四", 18));
-			list.add(new Student("王五", 18));
-			list.add(new Student("赵六", 18));
-			
-			for(int i = 0; i < list.size(); i++) {
-				Student s = (Student)list.get(i);
-				System.out.println(s.getName() + "," + s.getAge());
-			}
+        通过size()和get()方法结合使用遍历。
+    
+    		List list = new ArrayList();
+    		list.add(new Student("张三", 18));
+    		list.add(new Student("李四", 18));
+    		list.add(new Student("王五", 18));
+    		list.add(new Student("赵六", 18));
+    		
+    		for(int i = 0; i < list.size(); i++) {
+    			Student s = (Student)list.get(i);
+    			System.out.println(s.getName() + "," + s.getAge());
+    		}
 ```java
 package com.leeup.javase.day15.list;
 
@@ -551,37 +552,38 @@ public class Demo2_List {
 ### 11. 并发修改异常产生的原因及解决方案
     1. 案例演示
         需求：我有一个集合，请问，我想判断里面有没有"world"这个元素，如果有，我就添加一个"javaee"元素，请写代码实现。
+    
+    		List list = new ArrayList();
+    		list.add("a");
+    		list.add("b");
+    		list.add("world");
+    		list.add("d");
+    		list.add("e");
+    		
+    		/*Iterator it = list.iterator();
+    		while(it.hasNext()) {
+    			String str = (String)it.next();
+    			if(str.equals("world")) {
+    				list.add("javaee");			//这里会抛出ConcurrentModificationException并发修改异常
+    			}
+    		}*/
 
-			List list = new ArrayList();
-			list.add("a");
-			list.add("b");
-			list.add("world");
-			list.add("d");
-			list.add("e");
-			
-			/*Iterator it = list.iterator();
-			while(it.hasNext()) {
-				String str = (String)it.next();
-				if(str.equals("world")) {
-					list.add("javaee");			//这里会抛出ConcurrentModificationException并发修改异常
-				}
-			}*/
-		
-			
+
+​			
     2. ConcurrentModificationException出现
         1. 迭代器遍历，集合修改集合
     3. 解决方案
         1. 迭代器迭代元素，迭代器修改元素(ListIterator的特有功能add)
         2. 集合遍历元素，集合修改元素
-
-			ListIterator lit = list.listIterator();		//如果想在遍历的过程中添加元素,可以用ListIterator中的add方法
-			while(lit.hasNext()) {
-				String str = (String)lit.next();
-				if(str.equals("world")) {
-					lit.add("javaee");	
-					//list.add("javaee");
-				}
-			}
+    
+    		ListIterator lit = list.listIterator();		//如果想在遍历的过程中添加元素,可以用ListIterator中的add方法
+    		while(lit.hasNext()) {
+    			String str = (String)lit.next();
+    			if(str.equals("world")) {
+    				lit.add("javaee");	
+    				//list.add("javaee");
+    			}
+    		}
 ```java
 package com.leeup.javase.day15.list;
 
@@ -676,18 +678,18 @@ public class Demo4_ListIterator {
         3. public Enumeration elements()
     3. 案例演示	
         Vector的迭代
-
-			Vector v = new Vector();				//创建集合对象,List的子类
-			v.addElement("a");
-			v.addElement("b");
-			v.addElement("c");
-			v.addElement("d");
-			
-			//Vector迭代
-			Enumeration en = v.elements();			//获取枚举
-			while(en.hasMoreElements()) {			//判断集合中是否有元素
-				System.out.println(en.nextElement());//获取集合中的元素
-			}
+    
+    		Vector v = new Vector();				//创建集合对象,List的子类
+    		v.addElement("a");
+    		v.addElement("b");
+    		v.addElement("c");
+    		v.addElement("d");
+    		
+    		//Vector迭代
+    		Enumeration en = v.elements();			//获取枚举
+    		while(en.hasMoreElements()) {			//判断集合中是否有元素
+    			System.out.println(en.nextElement());//获取集合中的元素
+    		}
 
 ### 14. 数据结构之数组和链表
     1. 数组
@@ -699,30 +701,30 @@ public class Demo4_ListIterator {
 
 ### 15. List的三个子类的特点
     1. List的三个子类的特点
- 
-		ArrayList:
-			底层数据结构是数组，查询快，增删慢。
-			线程不安全，效率高。
-		Vector:
-			底层数据结构是数组，查询快，增删慢。
-			线程安全，效率低。
-		Vector相对ArrayList查询慢(线程安全的)
-		Vector相对LinkedList增删慢(数组结构)
-		LinkedList:
-			底层数据结构是链表，查询慢，增删快。
-			线程不安全，效率高。
-
-		Vector和ArrayList的区别
-			Vector是线程安全的,效率低
-			ArrayList是线程不安全的,效率高
-		共同点:都是数组实现的
-		ArrayList和LinkedList的区别
-			ArrayList底层是数组结果,查询和修改快
-			LinkedList底层是链表结构的,增和删比较快,查询和修改比较慢
-		共同点:都是线程不安全的
+     
+    	ArrayList:
+    		底层数据结构是数组，查询快，增删慢。
+    		线程不安全，效率高。
+    	Vector:
+    		底层数据结构是数组，查询快，增删慢。
+    		线程安全，效率低。
+    	Vector相对ArrayList查询慢(线程安全的)
+    	Vector相对LinkedList增删慢(数组结构)
+    	LinkedList:
+    		底层数据结构是链表，查询慢，增删快。
+    		线程不安全，效率高。
+    
+    	Vector和ArrayList的区别
+    		Vector是线程安全的,效率低
+    		ArrayList是线程不安全的,效率高
+    	共同点:都是数组实现的
+    	ArrayList和LinkedList的区别
+    		ArrayList底层是数组结果,查询和修改快
+    		LinkedList底层是链表结构的,增和删比较快,查询和修改比较慢
+    	共同点:都是线程不安全的
     2. List有三个儿子，我们到底使用谁呢?
-		查询多用ArrayList
-		增删多用LinkedList
-		如果都多ArrayList
+    	查询多用ArrayList
+    	增删多用LinkedList
+    	如果都多ArrayList
 ### 16. day15总结
 把今天的知识点总结一遍。

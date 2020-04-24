@@ -1,0 +1,244 @@
+# HelloWorld
+
+## 通过各种方式给容器注册对象（给婚介所注册会员）
+
+- 以前是自己new对象，现在是把所有的对象给容器创建，给容器中注册组件
+
+## 写配置
+
+1. spring的配置文件中，集合了spring的IOC容器管理的所有组件（会员清单）-> spring Bean Configuration File(spring Bean配置文件)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  注册一个Person对象，Springh会自动创建这个Person对象  -->
+    <!--  一个Bean标签可以注册一个组件（对象、类）
+      class: 注册的组件的全类名
+      id: 这个对象的唯一标示
+      -->
+    <bean id="person01" class="com.leeup.spring.pojo.Person">
+        <!--  使用property属性为Person对象属性赋值
+         name="lastName" :指定属性名
+         value="张三" ： 指定属性值
+              -->
+        <property name="lastName" value="张三"/>
+        <property name="age" value="18"></property>
+        <property name="email" value="1805179986@qq.com"></property>
+        <property name="gender" value="男"></property>
+    </bean>
+</beans>
+```
+
+- Person类
+
+```java
+package com.leeup.spring.pojo;
+
+
+/**
+ * @ClassName Person
+ * @Description TODO
+ * @Author cLee
+ * @Date{2020/3/30}
+ * @Version 1.0
+ **/
+public class Person {
+    private String lastName;
+    private Integer age;
+    private String gender;
+    private String email;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+
+```
+
+![](http://leeup.cn/images/20200330172016.png)
+
+- 测试类
+
+```java
+import com.leeup.spring.pojo.Person;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * @ClassName Test
+ * @Description TODO
+ * @Author cLee
+ * @Date{2020/3/30}
+ * @Version 1.0
+ **/
+public class IOCTest {
+
+    /**
+      * 存在的问题：
+     * 1. SRC:源码包开始的路径，称为类的路径
+     *      所有源码包l里面的东西都会被合并放在类路径下
+     *      java: /bin/
+     *      web: /WEB-INF/classes
+     * 2.
+      **/
+
+    // 从容器中拿到这个对象
+    @Test
+    public void test(){
+        // 先拿到容器
+        // ApplicationContext 就是容器
+        // 当前应用的xml文件配置路径在ClassPath下
+        // beans.xml 婚庆所
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        // 容器帮我们创建好了对象
+        Person person01 = (Person) context.getBean("person01");
+        person01.toString();
+        System.out.println(person01);
+    }
+}
+
+```
+
+```java
+new ClassPathXmlApplicationContext("beans.xml");
+//IOC容器的配置文件在类路径下：ClassPath
+new FileSystemXmlApplicationContext("beans.xml")
+//IOC容器配置文件在磁盘路径下    
+```
+
+## 细节
+
+1. ApplicationContext(IOC容器接口)
+2. 给容器中注册一个组件，我们也从容器中按照ID拿到了这个组件的对象
+   1. 组件的创建工作，是Spring容器帮我们创建的
+   2. 容器中的对象是在容器创建完成的时候就已经创建好了
+3. 同一个组件在IOC容器中是单例的，即只会创建一次，并且是在容器启动完成前创建准备好的
+4. 容器中如果没有没有某个组件但是你调用了就会出现异常
+
+```java
+org.springframework.beans.factory.NoSuchBeanDefinitionException:No such named 'xxxx' is defined
+// 没有bean名字叫xxx    
+```
+
+5. property属性是如何赋值的？
+   1. 在实体类的set方法中设置输出可以发现，容器创建对象的时候就调用了Set方法为属性赋值
+6. javaBean的属性名是由什么决定的？getter/setter方法是属性名，set去掉后面那一串字母小写就是属性名，即由GET/SET方法
+
+# 以Bean的类型从IOC容器中获取Bean的实例
+
+```java
+@Test
+public void test(){
+    Person bean = ioc.getBean(Person.class);
+}
+```
+
+- 如果IOC中有多个Person实例使用这种方式获取的时候会报错
+
+```java
+NoUniqueBeanDefinitionException:No qualifty bean of type
+```
+
+- 没有唯一的Bean可以定义，想找的类是希望是单个匹配，但是找到了两个
+- 或者使用下面的方法
+
+```java
+Person person = ioc.getBean("Person02",Person.class)
+```
+
+# 使用构造器为Bean的属性赋值
+
+```xml
+<bean id="Person02" class="com.leeup.spring.pojo.Person">
+    <constructor-arg name="lastName" value="小明"/>
+    <constructor-arg name="age" value="18"/>
+    <constructor-arg name="email" value="18051788@qq.com"/>
+    <constructor-arg name="gender" value="男"/>
+</bean>
+```
+
+- 会调用有参构造器
+
+# 为属性赋值详解省略
+
+- 通过P命名空间为bean赋值
+
+- 测试null赋值
+
+- ref引用外部的值
+
+- 引用内部bean
+
+- list属性赋值
+
+- map属性赋值
+
+- properties属性赋值
+
+- util名称空间创建一个可以外部引用的集合
+
+- 级联属性赋值
+
+- 继承实现bean配置复用
+
+- abstract创建模板bean
+
+- bean之间的依赖
+
+# bean的创建顺序按照配置的顺序来的
+
+## 改变bean创建的顺序
+
+```xml
+<bean id="car" clas="xxx" depends-on="Person,book"></bean>
+<bean id="Person" clas="xxx"></bean>
+<bean id="book" clas="xxx"></bean>
+```
+
+- 创建car的时候先创建person和book
+
+
+

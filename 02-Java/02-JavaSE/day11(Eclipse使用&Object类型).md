@@ -84,7 +84,7 @@
 * G:取消悬浮提示
 	* window -- Preferences -- Java--Editor--Hovers。右边将Combined Hover勾去掉。
 	* 这样代码的悬浮框就不会自动出现了。如果想看提示，将光标悬浮在代码上，按F2即可。
- 
+
 ### 05_Java开发工具(Eclipse中内容辅助键的使用)(掌握)
 * A:Alt+/ 起提示作用
 * B:main+alt+/,syso+alt+/,给出其他提示
@@ -105,7 +105,6 @@
 * J:删除代码 ctrl + d
 * K:抽取方法alt + shift + m 
 * L:改名alt + shift + r 
-* 
 
 ### 07_Java开发工具(Eclipse中如何提高开发效率)(掌握)
 * alt + shift + s
@@ -259,11 +258,11 @@ public class Demo2_GetClass {
     1. 案例展示
         1. public String toString()
         2. 返回该对象的字符串表示
-
+    
         public String toString(){
             return name + "," +age;
         }
-
+    
         3. 它的值等于
             getClass().getName() + "@" + Integer.toHexString(hashCode())
         4. 由于默认情况下的数据对我们来说没有意义，一般建议重写该方法
@@ -411,4 +410,4 @@ public class Student {
     2. ==号是一个比较运算符，即可以比较基本数据类型，也可以比较引用数据类型，基本数据类型比较的是值，引用数据类型比较的是地址值
     3. equals方法是一个方法,只能比较引用数据类型,所有的对象都会继承Object类中的方法,如果没有重写Object类中的equals方法,equals方法和==号比较引用数据类型无区别,重写后的equals方法比较的是对象中的属性
 
-### 2. day11总结
+### 21. day11总结

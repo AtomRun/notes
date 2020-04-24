@@ -8,7 +8,7 @@
         * Map是双列的,Collection是单列的
         * Map的键唯一,Collection的子体系Set是唯一的
         * Map集合的数据结构算法只针对键有效，跟值无关;Collection集合的数据结构是针对元素有效
-	
+
 ### 02. Map集合的功能概述
     1. Map集合的功能概述
         1. 添加功能
@@ -110,7 +110,7 @@ public class Demo1_Map {
         * 根据键找值
     2. 案例演示
         * Map集合的遍历之键找值
-
+    
                 HashMap<String, Integer> hm = new HashMap<>();
                 hm.put("张三", 23);
                 hm.put("李四", 24);
@@ -172,7 +172,7 @@ public class Demo2_Iterator {
 	}
 }
 ```
-![根据键获取值](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A0%B9%E6%8D%AE%E9%94%AE%E8%8E%B7%E5%8F%96%E5%80%BC.png)
+![根据键获取值](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%A0%B9%E6%8D%AE%E9%94%AE%E8%8E%B7%E5%8F%96%E5%80%BC.png)
 ### 04. Map集合的遍历之键值对对象找键和值
     1. 键值对对象找键和值思路：
         1. 获取所有键值对对象的集合
@@ -283,7 +283,7 @@ class Demo implements Inter.Inter2 {
 }
 ```
     3. 源码分析
-![根据键值对对象获取键和值](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%A0%B9%E6%8D%AE%E9%94%AE%E5%80%BC%E5%AF%B9%E8%B1%A1%E8%8E%B7%E5%8F%96.png)
+![根据键值对对象获取键和值](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%A0%B9%E6%8D%AE%E9%94%AE%E5%80%BC%E5%AF%B9%E8%B1%A1%E8%8E%B7%E5%8F%96.png)
 ### 05. HashMap集合键是Student值是String的案例
     1. 案例演示
         1. HashMap集合键是Student值是String的案例
@@ -820,7 +820,7 @@ public class Test2 {
 ### 13. 模拟斗地主洗牌和发牌并对牌进行排序的原理图解
 1. 画图演示
 	* 画图说明排序原理
-![斗地主](https://github.com/AtomRun/notes/blob/master/noteimages/%E6%96%97%E5%9C%B0%E4%B8%BB.png)
+![斗地主](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E6%96%97%E5%9C%B0%E4%B8%BB.png)
 ### 14. 模拟斗地主洗牌和发牌并对牌进行排序的代码实现
 1. 案例演示
 	* 模拟斗地主洗牌和发牌并对牌进行排序的代码实现

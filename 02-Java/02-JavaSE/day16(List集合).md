@@ -2,45 +2,45 @@
     1. 案例演示
         1. 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
         2. 思路：创建新集合方式
-
-			/**
-			 *  A:案例演示
-			 * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
-			 * 思路：创建新集合方式
-			 */
-			public static void main(String[] args) {
-				ArrayList list = new ArrayList();
-				list.add("a");
-				list.add("a");
-				list.add("b");
-				list.add("b");
-				list.add("b");
-				list.add("c");
-				list.add("c");
-				list.add("c");
-				list.add("c");
-				
-				System.out.println(list);
-				ArrayList newList = getSingle(list);
-				System.out.println(newList);
-			}
-		
-			/*
-			 * 去除重复
-			 * 1,返回ArrayList
-			 * 2,参数列表ArrayList
-			 */
-			public static ArrayList getSingle(ArrayList list) {
-				ArrayList newList = new ArrayList();			//创建一个新集合
-				Iterator it = list.iterator();					//获取迭代器
-				while(it.hasNext()) {							//判断老集合中是否有元素
-					String temp = (String)it.next();			//将每一个元素临时记录住
-					if(!newList.contains(temp)) {				//如果新集合中不包含该元素
-						newList.add(temp);						//将该元素添加到新集合中
-					}
-				}
-				return newList;									//将新集合返回
-			}
+    
+    		/**
+    		 *  A:案例演示
+    		 * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+    		 * 思路：创建新集合方式
+    		 */
+    		public static void main(String[] args) {
+    			ArrayList list = new ArrayList();
+    			list.add("a");
+    			list.add("a");
+    			list.add("b");
+    			list.add("b");
+    			list.add("b");
+    			list.add("c");
+    			list.add("c");
+    			list.add("c");
+    			list.add("c");
+    			
+    			System.out.println(list);
+    			ArrayList newList = getSingle(list);
+    			System.out.println(newList);
+    		}
+    	
+    		/*
+    		 * 去除重复
+    		 * 1,返回ArrayList
+    		 * 2,参数列表ArrayList
+    		 */
+    		public static ArrayList getSingle(ArrayList list) {
+    			ArrayList newList = new ArrayList();			//创建一个新集合
+    			Iterator it = list.iterator();					//获取迭代器
+    			while(it.hasNext()) {							//判断老集合中是否有元素
+    				String temp = (String)it.next();			//将每一个元素临时记录住
+    				if(!newList.contains(temp)) {				//如果新集合中不包含该元素
+    					newList.add(temp);						//将该元素添加到新集合中
+    				}
+    			}
+    			return newList;									//将新集合返回
+    		}
 ```java
 package com.leeup.javase.day16.list;
 /**
@@ -202,22 +202,22 @@ public class Demo3_LinkedList {
     1. 案例演示
         1. 需求：请用LinkedList模拟栈数据结构的集合，并测试
         2. 创建一个类将Linked中的方法封装
-	
-			public class Stack {
-				private LinkedList list = new LinkedList();		//创建LinkedList对象
-				
-				public void in(Object obj) {
-					list.addLast(obj);							//封装addLast()方法
-				}
-				
-				public Object out() {
-					return list.removeLast();					//封装removeLast()方法
-				}
-				
-				public boolean isEmpty() {
-					return list.isEmpty();						//封装isEmpty()方法
-				}
-			}
+    
+    		public class Stack {
+    			private LinkedList list = new LinkedList();		//创建LinkedList对象
+    			
+    			public void in(Object obj) {
+    				list.addLast(obj);							//封装addLast()方法
+    			}
+    			
+    			public Object out() {
+    				return list.removeLast();					//封装removeLast()方法
+    			}
+    			
+    			public boolean isEmpty() {
+    				return list.isEmpty();						//封装isEmpty()方法
+    			}
+    		}
 ```java
 package com.leeup.javase.day16.list;
 
@@ -569,10 +569,10 @@ public class Demo5_Generic {
     1. 增强for概述
         1. 简化数组和Collection集合的遍历
     2. 格式：
-
-		for(元素数据类型 变量 : 数组或者Collection集合) {
-			使用变量即可，该变量就是元素
-		}
+    
+    	for(元素数据类型 变量 : 数组或者Collection集合) {
+    		使用变量即可，该变量就是元素
+    	}
     3. 案例演示
         1. 数组，集合存储元素用增强for遍历
     4. 好处
@@ -616,15 +616,15 @@ public class Demo1_ForEach {
     1. 案例演示
         1. ArrayList存储字符串并遍历增强for版
     
-			ArrayList<String> list = new ArrayList<>();
-			list.add("a");
-			list.add("b");
-			list.add("c");
-			list.add("d");
-			
-			for(String s : list) {
-				System.out.println(s);
-			}
+    		ArrayList<String> list = new ArrayList<>();
+    		list.add("a");
+    		list.add("b");
+    		list.add("c");
+    		list.add("d");
+    		
+    		for(String s : list) {
+    			System.out.println(s);
+    		}
 ```java
 package com.leeup.javase.day16.jdk5;
 
@@ -796,7 +796,7 @@ public class Demo1_ForEach {
         2. 可以直接导入到方法的级别
     3. 注意事项
         1. 方法必须是静态的,如果有多个同名的静态方法，容易不知道使用谁?
-	这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。
+    这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。
     开发不用，但是要能看懂
 ```java
 package com.leeup.javase.day16.jdk5;
@@ -930,11 +930,11 @@ public class Demo4_AsList {
 ```
 ### 19. 集合嵌套之ArrayList嵌套ArrayList
     1. 案例演示
-		1. 集合嵌套之ArrayList嵌套ArrayList
-	1. 案例：
-		1. 我们学科，学科又分为若干个班级
-		2. 整个学科一个大集合
-		3. 若干个班级分为每一个小集合
+    	1. 集合嵌套之ArrayList嵌套ArrayList
+    1. 案例：
+    	1. 我们学科，学科又分为若干个班级
+    	2. 整个学科一个大集合
+    	3. 若干个班级分为每一个小集合
 ```java
 package com.leeup.javase.day16.list;
 

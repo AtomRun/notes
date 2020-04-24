@@ -9,7 +9,7 @@
         1. 买煎饼果子
         2. 洗衣服
 
-![面向对象概述](https://github.com/AtomRun/notes/blob/master/noteimages/Object-oriented%20overview.png)
+![面向对象概述](https://github.com/AtomRun/notes/blob/master/00-00-noteimages/Object-oriented%20overview.png)
 
     4. 面向对象思想特点
         1. 是一种更符合我们思想习惯的思想
@@ -25,7 +25,7 @@
         1. 封装(encapsulation)
         2. 继承(inheritance)
         3. 多态(polymorphism)
-   
+
 ### 2. 类与对象概述
     1. 我们学习编程是为了什么
         1. 为了把我们日常生活中的事物用学习语言描述出来
@@ -81,17 +81,17 @@
 ### 7. 一个对象的内存图
     1. 画图演示
         1. 一个对象 
-![一个对象的内存图](https://github.com/AtomRun/notes/blob/master/noteimages/%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![一个对象的内存图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png)
 
 ### 8. 二个对象的内存图
     1. 画图演示
         1. 二个不同的对象
-![两个对象的内存图](https://github.com/AtomRun/notes/blob/master/noteimages/%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![两个对象的内存图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png)
 
 ### 9. 三个引用两个对象的内存图
     1. 画图演示
         1. 三个引用，有两个对象的引用指向同一个地址
-![三个引用两个对象内存图](https://github.com/AtomRun/notes/blob/master/noteimages/%E4%B8%89%E4%B8%AA%E5%BC%95%E7%94%A8%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%9B%BE.png)
+![三个引用两个对象内存图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E4%B8%89%E4%B8%AA%E5%BC%95%E7%94%A8%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%9B%BE.png)
 
 ### 10. 成员变量和局部变量的区别
     1. 在类中的位置不同

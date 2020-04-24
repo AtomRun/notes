@@ -1,6 +1,6 @@
 ### 01.单例设计模式(掌握)
     * 单例设计模式：保证类在内存中只有一个对象。
-
+    
     * 如何保证类在内存中只有一个对象呢？
         * (1)控制类的创建，不让其他类来创建本类的对象。private
         * (2)在本类中定义一个本类的对象。Singleton s;
@@ -577,12 +577,12 @@ class Printer3 {
 			// 通过结果我们知道了：线程默认情况下属于main线程组
 			// 通过下面的测试，你应该能够看到，默任情况下，所有的线程都属于同一个组
 			System.out.println(Thread.currentThread().getThreadGroup().getName());
-
+	
 		* 自己设定线程组
 	* 			
 			// ThreadGroup(String name)
 			ThreadGroup tg = new ThreadGroup("这是一个新的组");
-
+	
 			MyRunnable mr = new MyRunnable();
 			// Thread(ThreadGroup group, Runnable target, String name)
 			Thread t1 = new Thread(tg, mr, "张三");
@@ -645,7 +645,7 @@ class MyRunnable implements Runnable {
 ### 08. 线程的五种状态(掌握)
 	* 看图说话
 	* 新建,就绪,运行,阻塞,死亡
-![线程状态图](https://github.com/AtomRun/notes/blob/master/noteimages/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png)
+![线程状态图](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E5%9B%BE.png)
 ### 09. 线程池的概述和使用(了解)
 	1. 线程池概述
 		* 程序启动一个新线程成本是比较高的，因为它涉及到要与操作系统进行交互。而使用线程池可以很好的提高性能，尤其是当程序中要创建大量生存期很短的线程时，更应该考虑使用线程池。线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。在JDK5之前，我们必须手动实现自己的线程池，从JDK5开始，Java内置支持线程池
@@ -666,11 +666,11 @@ class MyRunnable implements Runnable {
 	* 
 			// public static ExecutorService newFixedThreadPool(int nThreads)
 			ExecutorService pool = Executors.newFixedThreadPool(2);
-
+	
 			// 可以执行Runnable对象或者Callable对象代表的线程
 			pool.submit(new MyRunnable());
 			pool.submit(new MyRunnable());
-
+	
 			//结束线程池
 			pool.shutdown();
 ```java
@@ -698,27 +698,27 @@ public class Demo5_Excutors {
 ```
 ### 10.多线程程序实现的方式3(了解)
 	* 提交的是Callable
-
+	
 	* 
 			// 创建线程池对象
 			ExecutorService pool = Executors.newFixedThreadPool(2);
-
+	
 			// 可以执行Runnable对象或者Callable对象代表的线程
 			Future<Integer> f1 = pool.submit(new MyCallable(100));
 			Future<Integer> f2 = pool.submit(new MyCallable(200));
-
+	
 			// V get()
 			Integer i1 = f1.get();
 			Integer i2 = f2.get();
-
+	
 			System.out.println(i1);
 			System.out.println(i2);
-
+	
 			// 结束
 			pool.shutdown();
-
+	
 			public class MyCallable implements Callable<Integer> {
-
+	
 				private int number;
 			
 				public MyCallable(int number) {

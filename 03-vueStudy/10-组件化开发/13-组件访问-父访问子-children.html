@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+  <template id="cpn">
+    <div>我是子组件</div>
+
+  </template>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const vue = new Vue({
+      el : "#app",
+       data:{
+          message:'你好'
+       },
+       components:{
+          cpn:{
+              template:'#cpn',
+              methods:{
+                  showMessage(){
+                      console.log('showMessage');
+                  }
+              }
+          }
+       },
+       methods: {
+        btnClick() {
+            console.log(this.$children);
+            this.$children[0].showMessage()
+        }
+       }
+    })
+  </script>
 </body>
 </html>

@@ -51,7 +51,7 @@ public class Demo1_FileReader {
 ```
 ### 02. 字符流FileWriter
     * FileWriter类的write()方法可以自动把字符转为字节写出
-
+    
             FileWriter fw = new FileWriter("aaa.txt");
             fw.write("aaa");
             fw.close();
@@ -123,7 +123,7 @@ public class Demo3_Copy {
     * 程序需要读取一段文本, 或者需要写出一段文本的时候可以使用字符流
     * 读取的时候是按照字符的大小读取的,不会出现半个中文
     * 写出的时候可以直接将字符串写出,不用转换为字节数组
-![什么情况下使用字符流](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%AD%97%E7%AC%A6%E6%B5%81%E5%92%8C%E5%AD%97%E8%8A%82%E6%B5%81%E5%93%AA%E4%B8%AA%E6%8B%B7%E8%B4%9D%E7%BA%AF%E6%96%87%E6%9C%AC%E6%9B%B4%E5%A5%BD.png)
+![什么情况下使用字符流](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%AD%97%E7%AC%A6%E6%B5%81%E5%92%8C%E5%AD%97%E8%8A%82%E6%B5%81%E5%93%AA%E4%B8%AA%E6%8B%B7%E8%B4%9D%E7%BA%AF%E6%96%87%E6%9C%AC%E6%9B%B4%E5%A5%BD.png)
 
 ### 05. 字符流是否可以拷贝非纯文本的文件
     * 不可以拷贝非纯文本的文件
@@ -132,10 +132,10 @@ public class Demo3_Copy {
 
 ### 06. 自定义字符数组的拷贝)
 *	
-		
+	​	
 		FileReader fr = new FileReader("aaa.txt");			//创建字符输入流,关联aaa.txt
-		FileWriter fw = new FileWriter("bbb.txt");			//创建字符输出流,关联bbb.txt
-		
+	​	FileWriter fw = new FileWriter("bbb.txt");			//创建字符输出流,关联bbb.txt
+	​	
 		int len;
 		char[] arr = new char[1024*8];						//创建字符数组
 		while((len = fr.read(arr)) != -1) {					//将数据读到字符数组中
@@ -327,7 +327,7 @@ public class Demo5_LineNumberReader {
 ```
 ### 11. 装饰设计模式
 
- 
+
 		interface Coder {
 			public void code();
 		}
@@ -375,7 +375,7 @@ public class Demo5_LineNumberReader {
             bw.close();
 ### 13. 转换流图解
     * 画图分析转换流
-    ![转换流](https://github.com/AtomRun/notes/blob/master/noteimages/%E8%BD%AC%E6%8D%A2%E6%B5%81.png)
+    ![转换流](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E8%BD%AC%E6%8D%A2%E6%B5%81.png)
 ### 14. 获取文本上字符出现的次数
     * 获取一个文本上每个字符出现的次数,将结果写在times.txt上
 ```java

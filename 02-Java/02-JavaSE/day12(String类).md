@@ -190,7 +190,7 @@ System.out.println(s1 == s2);
 System.out.println(s1.equals(s2));
 ```
 
-![String面试题1](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%981.png)
+![String面试题1](https://github.com/AtomRun/notes/blob/master/00-noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%981.png)
 
  2. 下面这句话在内存中创建了几个对象?
 
@@ -198,7 +198,7 @@ System.out.println(s1.equals(s2));
 ```java
 String s1 = new String("abc");
 ```
-![Stgring面试题2](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%982.png)
+![Stgring面试题2](https://github.com/AtomRun/notes/blob/master/00-noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%982.png)
 
  3. 判断定义为String类型的s1和s2是否相等
 ```java
@@ -222,7 +222,7 @@ String s3 = s1 + "c";
 System.out.println(s3 == s2);
 System.out.println(s3.equals(s2));
 ```
-![String面试题5](https://github.com/AtomRun/notes/blob/master/noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%985.png)
+![String面试题5](https://github.com/AtomRun/notes/blob/master/00-noteimages/String%E9%9D%A2%E8%AF%95%E9%A2%985.png)
 ```java
 package com.leeup.javase.day12.string;
 
@@ -657,7 +657,7 @@ public class Test3 {
 		3. static String valueOf(char[] chs):把字符数组转成字符串。
 		4. static String valueOf(int i):把int类型的数据转成字符串。
 			1. 注意：String类的valueOf方法可以把任意类型的数据转成字符串
-
+	
 		5. String toLowerCase():把字符串转成小写。(了解)
 		6. String toUpperCase():把字符串转成大写。
 		7. String concat(String str):把字符串拼接。
@@ -956,7 +956,7 @@ public class Test6 {
 	1. 画图演示
 	2. 需求：统计大串中小串出现的次数
 		1. 这里的大串和小串可以自己根据情况给出
-![大串中查找小串图解](https://github.com/AtomRun/notes/blob/master/noteimages/%E5%A4%A7%E4%B8%B2%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%B0%8F%E4%B8%B2%E7%9A%84%E6%AC%A1%E6%95%B0.png)
+![大串中查找小串图解](https://github.com/AtomRun/notes/blob/master/00-noteimages/%E5%A4%A7%E4%B8%B2%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%B0%8F%E4%B8%B2%E7%9A%84%E6%AC%A1%E6%95%B0.png)
 
 ### 17. 在大串中查找小串出现的次数代码实现
 	1. 案例演示	

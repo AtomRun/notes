@@ -441,7 +441,7 @@ public class Demo12_Array {
   			int x;
   			int y;
   			int x,y;
-  
+
     		int [] x;
     		int [] y[];
     
@@ -499,7 +499,7 @@ public class Demo1_Array {
 ```
 
 ### 16. 画图讲解二维数组名称，一维数组名称，一个元素的值的问题
-![数组内存图讲解](https://github.com/AtomRun/notes/blob/master/noteimages/arrayMemoryMap.png)
+![数组内存图讲解](https://github.com/AtomRun/notes/blob/master/00-noteimages/arrayMemoryMap.png)
 
 ### 17. 二维数组格式2的讲解
     1. 二维数组格式2
@@ -557,7 +557,7 @@ public class Demo4_Array {
 ### 19. 二维数组练习1遍历
     1. 案例展示
         1. 需求:二维数组遍历
-
+    
         2. 外循环控制的是二维数组的长度，其实就是一维数组的个数。
         3. 内循环控制的是一维数组的长度
 
@@ -626,7 +626,7 @@ public class Test2_Array {
 ### 20. 思考题：java中的参数传递问题以及图解
 	1. 基本数据类型的值传递，不改变原值，因为调用后就会弹栈，局部变量随之消失
 	2. 引用数据类型的值传递，改变原值，因为即使方法弹栈，但是堆内存的数组对象还在，可以通过地址继续访问。
-
+	
 	1. 问题：java中到底是传值还是传地址？
 		1. 有人认为：既是传值，也是传地址。基本数据类型传递的是值，引用数据类型传递的是地址
 		2. 第二种：java中只有传值，因为地址值也是值[目前认为正确的，因为是java之父，詹姆斯·高斯林提出的]
