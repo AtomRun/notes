@@ -563,7 +563,7 @@ class Person{
 										//推荐使用类名. 因为如果只需要调用静态，就不需要创建对象了
 		System.out.println(Person.country);
 ```
-### 11. static的注意事项p
+### 11. static的注意事项
     1. static的注意事项
         1. 在静态方法中是没有this关键字的
             1. 如何理解呢?

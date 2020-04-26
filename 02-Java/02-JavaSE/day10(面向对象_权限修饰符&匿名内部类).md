@@ -72,12 +72,17 @@
         1. 四种权限修饰夫
     2. 结论 
         1. 在不同包下的无关类，不允许访问，因为是protected修饰的
-					本类	 同一个包下(子类和无关类)	不同包下(子类)	不同包下(无关类)
-		private     Y		
-		default     Y		        Y     
-		protected	Y		        Y						Y
-		public		Y		        Y						Y				Y
+|           | 不同包下(无关类) | 本类 | 同一个包下(子类和无关类) | 不同包下(子类) |
+| --------- | ---------------- | ---- | :----------------------- | :------------- |
+| private   | Y                |      |                          |                |
+| default   | Y                | Y    |                          |                |
+| protected | Y                | Y    | Y                        |                |
+| public    | Y                | Y    | Y                        | Y              |
+
+
+
 ### 7. 类及其组成所使用的常见修饰符
+
     1. 修饰符
         1. 权限修饰符：private,默认的，protected,public
         2. 状态修饰符：static,final
@@ -462,23 +467,23 @@ class Outer1 {
 ### 15. 匿名内部类在开发中的应用
     1. 代码如下
         //这里写抽象类，接口都行
-		abstract class Person {
-			public abstract void show();
-		}
-	
-		class PersonDemo {
-			public void method(Person p) {
-				p.show();
-			}
-		}
-	
-		class PersonTest {
-			public static void main(String[] args) {
-				//如何调用PersonDemo中的method方法呢?
-				PersonDemo pd = new PersonDemo ();
-				
-			}
-		}
+    	abstract class Person {
+    		public abstract void show();
+    	}
+    
+    	class PersonDemo {
+    		public void method(Person p) {
+    			p.show();
+    		}
+    	}
+    
+    	class PersonTest {
+    		public static void main(String[] args) {
+    			//如何调用PersonDemo中的method方法呢?
+    			PersonDemo pd = new PersonDemo ();
+    			
+    		}
+    	}
 ```java
 package com.leeup.javase.day10.匿名内部类;
 
