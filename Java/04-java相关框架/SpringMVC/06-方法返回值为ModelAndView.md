@@ -24,9 +24,8 @@ ModelAndView即包含视图信息（页面地址），也包含模型数据（�
 有两个属性
 
 - Sting[] values() default {}
-
-@SessionAttributes (value="msg") 
-给BindingAwareModelMap中或者ModelAndView中保存的数据，同时给session中放一份，value的作用是，只有value(key)为msg的时候才保存到session中。
+- @SessionAttributes (value="msg") 
+  - 给BindingAwareModelMap中或者ModelAndView中保存的数据，同时给session中放一份，value的作用是，只有value(key)为msg的时候才保存到session中。
 
 - Class<?> types() default {}
 

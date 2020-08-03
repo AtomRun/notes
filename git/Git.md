@@ -55,6 +55,5 @@ git mv readme readme.md
 ```shell
 git log --oneline #简洁的看版本历史
 git log -n4 --oneline #最近的4个commit
-
 ```
 
