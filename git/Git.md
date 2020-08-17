@@ -1,4 +1,4 @@
-# 使用Git之前必须做的最小配置
+#  使用Git之前必须做的最小配置
 
 1. 配置user.name和user.email
 
