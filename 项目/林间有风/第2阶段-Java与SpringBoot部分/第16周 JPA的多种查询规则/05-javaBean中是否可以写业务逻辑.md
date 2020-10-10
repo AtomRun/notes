@@ -1,0 +1,4 @@
+# javaBean中能否写业务逻辑
+
+javaBean中不能写像service那种复杂的业务逻辑，但是像pagingdozer这种小一点的业务逻辑是没问题的
+
