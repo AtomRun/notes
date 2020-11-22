@@ -24,7 +24,7 @@ public class TokenController {
             default:
                 throw new NotFoundException(10003);
         }
-        //哪怕是’单一字符串也要返回map，返回之后前端得到的是js对象，不然前端不好处理。
+        //哪怕是单一字符串也要返回map，返回之后前端得到的是js对象，不然前端不好处理。
         map.put("token",token);
         return map;
     }
