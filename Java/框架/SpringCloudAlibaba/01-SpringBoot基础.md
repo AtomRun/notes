@@ -22,3 +22,4 @@
 
 ## 使用Spring Initializr快速创建Spring Boot应用
 
+# SpringBootActuator
